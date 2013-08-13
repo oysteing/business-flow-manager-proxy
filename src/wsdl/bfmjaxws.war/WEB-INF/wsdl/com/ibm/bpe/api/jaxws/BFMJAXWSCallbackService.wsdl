@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BEGIN COPYRIGHT
+  *************************************************************************
+  
+   Licensed Materials - Property of IBM
+   
+   Product 5655-FLW (C) COPYRIGHT International Business Machines Corp., 2009, 2010.
+   US Government Users Restricted Rights - Use, duplication or 
+   disclosure restricted by GSA ADP Schedule Contract 
+   with IBM Corp.
+  
+  ************************************************************************/
+  END COPYRIGHT
+-->
+<wsdl:definitions name="BFMJAXWSCallbackService" 
+  targetNamespace="http://www.ibm.com/xmlns/prod/websphere/business-process/callback-services/7.0/Binding" 
+  xmlns:bpcb="http://www.ibm.com/xmlns/prod/websphere/business-process/callback-services/7.0/Binding"
+  xmlns:bpcs="http://www.ibm.com/xmlns/prod/websphere/business-process/callback-services/7.0" 
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <wsdl:import namespace="http://www.ibm.com/xmlns/prod/websphere/business-process/callback-services/7.0" location="BFMJAXWSCallbackInterface.wsdl" />
+
+  <wsdl:binding name="BFMJAXWSCallbackBinding" type="bpcs:BFMJAXWSCallbackPortType">
+
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+    <!--
+      Callback with Output
+    -->
+    <wsdl:operation name="callbackAsyncResponse">
+      <soap:operation />
+      <wsdl:input name="callbackAsyncResponse">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+
+    <!--
+      Callback with Business Fault
+    -->
+    <wsdl:operation name="callbackAsyncBusinessFault">
+      <soap:operation />
+      <wsdl:input name="callbackAsyncBusinessFault">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+
+    <!--
+      Callback with Runtime Fault
+    -->
+    <wsdl:operation name="callbackAsyncProcessFault">
+      <soap:operation />
+      <wsdl:input name="callbackAsyncProcessFault">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="BFMJAXWSCallbackService">
+    <wsdl:port binding="bpcb:BFMJAXWSCallbackBinding" name="BFMJAXWSCallbackPort">
+      <soap:address location="___SET_THIS_TO_CALLBACK_ADDRESS___" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

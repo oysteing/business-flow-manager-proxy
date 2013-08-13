@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BEGIN COPYRIGHT
+  *************************************************************************
+  
+   Licensed Materials - Property of IBM
+   
+   Product 5655-FLW (C) COPYRIGHT International Business Machines Corp., 2009, 2010.
+   US Government Users Restricted Rights - Use, duplication or 
+   disclosure restricted by GSA ADP Schedule Contract 
+   with IBM Corp.
+  
+  ************************************************************************/
+  END COPYRIGHT
+-->
+<wsdl:definitions name="BFMJAXWSCallbackInterface" 
+  targetNamespace="http://www.ibm.com/xmlns/prod/websphere/business-process/callback-services/7.0" 
+  xmlns:bpcs="http://www.ibm.com/xmlns/prod/websphere/business-process/callback-services/7.0"
+  xmlns:bpt="http://www.ibm.com/xmlns/prod/websphere/business-process/types/7.0" 
+  xmlns:bct="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" 
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <wsdl:types>
+    <xsd:schema 
+      targetNamespace="http://www.ibm.com/xmlns/prod/websphere/business-process/callback-services/7.0" 
+      xmlns:bpcs="http://www.ibm.com/xmlns/prod/websphere/business-process/callback-services/7.0"
+      xmlns:bpt="http://www.ibm.com/xmlns/prod/websphere/business-process/types/7.0" 
+      xmlns:bct="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" 
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+      <xsd:import namespace="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" schemaLocation="BPCDataTypes.xsd" />
+
+      <!--
+        Callback with Output
+      -->
+      <xsd:element name="callbackAsyncResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="output" type="bct:UserDataType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <!--
+        Callback with Business Fault
+      -->
+      <xsd:element name="callbackAsyncBusinessFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="businessFault" type="bct:BusinessFaultType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <!--
+        Callback with Runtime Fault
+      -->
+      <xsd:element name="callbackAsyncProcessFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="processFault" type="bct:BPCFaultType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="callbackAsyncResponseMsg">
+    <wsdl:part element="bpcs:callbackAsyncResponse" name="callbackAsyncResult" />
+  </wsdl:message>
+  <wsdl:message name="callbackAsyncBusinessFaultMsg">
+    <wsdl:part element="bpcs:callbackAsyncBusinessFault" name="callbackAsyncBusinessFaultResult" />
+  </wsdl:message>
+  <wsdl:message name="callbackAsyncProcessFaultMsg">
+    <wsdl:part element="bpcs:callbackAsyncProcessFault" name="callbackAsyncProcessFaultResult" />
+  </wsdl:message>
+
+  <wsdl:portType name="BFMJAXWSCallbackPortType">
+
+    <!--
+      Callback with Output
+    -->
+    <wsdl:operation name="callbackAsyncResponse">
+      <wsdl:input message="bpcs:callbackAsyncResponseMsg" name="callbackAsyncResponse" />
+    </wsdl:operation>
+
+    <!--
+      Callback with Business Fault
+    -->
+    <wsdl:operation name="callbackAsyncBusinessFault">
+      <wsdl:input message="bpcs:callbackAsyncBusinessFaultMsg" name="callbackAsyncBusinessFault" />
+    </wsdl:operation>
+
+    <!--
+      Callback with Runtime Fault
+    -->
+    <wsdl:operation name="callbackAsyncProcessFault">
+      <wsdl:input message="bpcs:callbackAsyncProcessFaultMsg" name="callbackAsyncProcessFault" />
+    </wsdl:operation>
+
+  </wsdl:portType>
+</wsdl:definitions>

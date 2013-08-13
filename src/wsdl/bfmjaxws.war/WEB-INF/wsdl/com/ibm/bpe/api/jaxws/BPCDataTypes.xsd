@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BEGIN COPYRIGHT
+  *************************************************************************
+  
+   Licensed Materials - Property of IBM
+   
+   Product 5655-FLW (C) COPYRIGHT International Business Machines Corp., 2009, 2010
+   US Government Users Restricted Rights - Use, duplication or 
+   disclosure restricted by GSA ADP Schedule Contract 
+   with IBM Corp.
+  
+  ************************************************************************/
+  END COPYRIGHT
+-->
+<xsd:schema targetNamespace="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" 
+  xmlns:bct="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" 
+  xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:import namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" schemaLocation="wsa.xsd"/>
+
+  <!--
+    QueryResultSet
+  -->
+  <xsd:element name="queryResultSet" type="bct:QueryResultSetType"/>
+  <xsd:complexType name="QueryResultSetType">
+    <xsd:annotation>
+      <xsd:documentation>The result set of a query.</xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="size">
+        <xsd:annotation>
+          <xsd:documentation>The number of tuples in the query result set. 0 is returned if the query result set is empty.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="0"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+
+      <xsd:element name="numberColumns">
+        <xsd:annotation>
+          <xsd:documentation>The number of columns in the query result set.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="queryColumnInfo" type="bct:QueryColumnInfoType">
+        <xsd:annotation>
+          <xsd:documentation>The column information such as table name, column name and column type.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="result" type="bct:QueryResultType">
+        <xsd:annotation>
+          <xsd:documentation>The result rows.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="queryResult" type="bct:QueryResultType"/>
+  <xsd:complexType name="QueryResultType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="queryResultRow" type="bct:QueryResultRowType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="queryResultRow" type="bct:QueryResultRowType"/>
+  <xsd:complexType name="QueryResultRowType">
+    <xsd:annotation>
+      <xsd:documentation>A row of the query result.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="value" nillable="true" type="xsd:anySimpleType">
+        <xsd:annotation>
+          <xsd:documentation>A value in a row. The value is a XML Schema simple type according to the column type. If the database value is null, value contains a null object.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="queryColumnInfo" type="bct:QueryColumnInfoType"/>
+  <xsd:complexType name="QueryColumnInfoType">
+    <xsd:annotation>
+      <xsd:documentation>The information on the column of a query result set.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="tableName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the table.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="columnName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the column.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="type">
+        <xsd:annotation>
+          <xsd:documentation>The type of the column.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="xsd:boolean"/>
+            <xsd:enumeration value="xsd:dateTime"/>
+            <xsd:enumeration value="xsd:double"/>
+            <xsd:enumeration value="xsd:hexBinary"/>
+            <xsd:enumeration value="xsd:int"/>
+            <xsd:enumeration value="xsd:string"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+
+      <xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    StoredQuery
+  -->
+  <xsd:element name="storedQuery" type="bct:StoredQueryType"/>
+  <xsd:complexType name="StoredQueryType">
+    <xsd:sequence>
+
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the stored query.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element minOccurs="0" name="userID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The owner of the stored query when the stored query is for private usage.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="kind" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The kind of a stored query, it may be private or public. Possible values are: KIND_PRIVATE, KIND_PUBLIC</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="selectClause" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The select clause of the stored query.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element minOccurs="0" name="whereClause" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The where clause of the stored query.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element minOccurs="0" name="orderByClause" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The order clause of the stored query.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element minOccurs="0" name="threshold" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>The maximum number of result tuples to be returned from the server to the client.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="storedQueryProperty" type="bct:StoredQueryPropertyType">
+        <xsd:annotation>
+          <xsd:documentation>A list of user-defined properties for the stored query</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    StoredQueryNames
+  -->
+  <xsd:element name="storedQueryNames" type="bct:StoredQueryNamesType"/>
+  <xsd:complexType name="StoredQueryNamesType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="storedQueryName" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    StoredQueryProperty
+  -->
+  <xsd:element name="storedQueryProperty" type="bct:StoredQueryPropertyType"/>
+  <xsd:complexType name="StoredQueryPropertyType">
+    <xsd:sequence>
+
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of a stored query property.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="value" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The value of a stored query property.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    BPCFault
+  -->
+  <xsd:element name="bpcFault" type="bct:BPCFaultType"/>
+  <xsd:complexType name="BPCFaultType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="faultStack" type="bct:FaultStackType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="faultStack" type="bct:FaultStackType"/>
+  <xsd:complexType name="FaultStackType">
+    <xsd:sequence>
+
+      <xsd:element name="message" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The message of the exception</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element minOccurs="0" name="messageKey" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The message key of the exception</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="timestamp" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>The time when the exception occured.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="messageParameter" type="xsd:anySimpleType">
+        <xsd:annotation>
+          <xsd:documentation>The values of the message parameters.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="stackTrace">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="className" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="fileName" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="methodName" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="lineNumber" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    CustomProperties
+  -->
+  <xsd:element name="customProperties" type="bct:CustomPropertiesType"/>
+  <xsd:complexType name="CustomPropertiesType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="customProperty" type="bct:CustomPropertyType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--
+    CustomProperty
+  -->
+  <xsd:element name="customProperty" type="bct:CustomPropertyType"/>
+  <xsd:complexType name="CustomPropertyType">
+    <xsd:sequence>
+
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of a custom property.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element minOccurs="0" name="value" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The value of a custom property.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    Parameters
+  -->
+  <xsd:element name="parameters" type="bct:ParametersType"/>
+  <xsd:complexType name="ParametersType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="parameter" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    MessageParameters
+  -->
+  <xsd:element name="messageParameters" type="bct:MessageParametersType"/>
+  <xsd:complexType name="MessageParametersType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="messageParameter" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    LocalizedTexts
+  -->
+  <xsd:element name="localizedTexts" type="bct:LocalizedTextsType"/>
+  <xsd:complexType name="LocalizedTextsType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="localizedText" type="bct:LocalizedTextType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--
+    LocalizedText
+  -->
+  <xsd:element name="localizedText" type="bct:LocalizedTextType"/>
+  <xsd:complexType name="LocalizedTextType">
+    <xsd:sequence>
+
+      <xsd:element name="locale" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The locale of the text.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="text" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The text itself.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    BusinessFault
+  -->
+  <xsd:element name="businessFault" type="bct:BusinessFaultType"/>
+  <xsd:complexType name="BusinessFaultType">
+    <xsd:sequence>
+
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The fault name.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:any minOccurs="0" namespace="##other" processContents="lax">
+        <xsd:annotation>
+          <xsd:documentation>The fault message.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:any>
+
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    Faults
+  -->
+  <xsd:element name="faults" type="bct:FaultsType"/>
+  <xsd:complexType name="FaultsType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="fault" type="bct:FaultType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--
+    Fault
+  -->
+  <xsd:element name="fault" type="bct:FaultType"/>
+  <xsd:complexType name="FaultType">
+    <xsd:sequence>
+
+      <xsd:element name="faultName" type="xsd:QName">
+        <xsd:annotation>
+          <xsd:documentation>The fault name.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="faultType" type="xsd:QName">
+        <xsd:annotation>
+          <xsd:documentation>The fault type QName.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    ReplyTo
+  -->
+  <xsd:element name="replyTo" type="bct:ReplyToType"/>
+  <xsd:complexType name="ReplyToType">
+    <xsd:sequence>
+      <xsd:element name="endpointReference" type="wsa:EndpointReferenceType">
+        <xsd:annotation>
+          <xsd:documentation>The Endpoint Reference.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    UserData
+  -->
+  <xsd:element name="userData" type="bct:UserDataType"/>
+  <xsd:complexType name="UserDataType">
+    <xsd:sequence>
+      <xsd:any namespace="##other" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    Separator
+  -->
+  <xsd:element name="separator" type="bct:SeparatorType"/>
+  <xsd:complexType name="SeparatorType">
+    <xsd:complexContent>
+      <xsd:restriction base="xsd:anyType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!--
+    QueryTableParametersType
+  -->
+  <xsd:element name="queryTableParameters" type="bct:QueryTableParametersType"/>
+  <xsd:complexType name="QueryTableParametersType">
+    <xsd:annotation>
+      <xsd:documentation>List of parameters used in query table filters and selection criteria.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="queryTableParameter" type="bct:QueryTableParameterType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    QueryTableParameterType
+  -->
+  <xsd:element name="queryTableParameter" type="bct:QueryTableParameterType"/>
+  <xsd:complexType name="QueryTableParameterType">
+    <xsd:annotation>
+      <xsd:documentation>Parameter used in query table filters and selection criteria.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the parameter as used in the query table definition.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="value" type="xsd:anySimpleType">
+        <xsd:annotation>
+          <xsd:documentation>The value of the parameter. Depending on the attribute type, the xsi:type of the parameter value element must be set to xsd:string (supported for all attribute types) or xsd:base64Binary (for attribute type BINARY), xsd:boolean (for BOOLEAN), xsd:double (for DECIMAL), xsd:string (for ID), xsd:long (for NUMBER attributes not representing enum values), xsd:string (for NUMBER attributes representing enum values), xsd:string (for STRING), and xsd:dateTime (for TIMESTAMP), respectively. Names of constants defined on some attributes of predefined query tables must be passed as a string value, for example "STATE_READY".</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    MetaDataOptions
+  -->
+  <xsd:element name="metaDataOptions" type="bct:MetaDataOptionsType"/>
+  <xsd:complexType name="MetaDataOptionsType">
+    <xsd:annotation>
+      <xsd:documentation>Options for a query table metadata query.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="userParametersAllowed" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Specifies whether query tables that contain user parameters are to be considered.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="locale" type="xsd:string" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>The locale for meta data such as query table display names. Locales are modified before the system variable $LOCALE is set. The returned meta data object for each query table contains a locale  member which shows the value of the modified locale.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="primaryQueryTableFilter" type="xsd:string" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>A comma separated list of primary query table names. Only query tables that have one of the specified primary query tables as primary query table are considered. If no restriction on primary query table names is to be applied, null must be specified.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="sourceAttributeFilter" type="xsd:string" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>A comma separated list of source attribute names. Only query tables with all of the specified source attributes are considered. The format of a source attribute name is QueryTableName.AttributeName in uppercase letters, for example, TASK.STATE or PROCESS_INSTANCE.NAME. If no restriction on source attributes is to be applied, null must be specified.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    QueryTableMetaDataSet
+  -->
+  <xsd:element name="queryTableMetaDataSet" type="bct:QueryTableMetaDataSetType"/>
+  <xsd:complexType name="QueryTableMetaDataSetType">
+    <xsd:annotation>
+      <xsd:documentation>List of query table metadata objects.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="queryTableMetaData" type="bct:QueryTableMetaDataType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--
+    QueryTableMetaData
+  -->
+  <xsd:element name="queryTableMetaData" type="bct:QueryTableMetaDataType"/>
+  <xsd:complexType name="QueryTableMetaDataType">
+    <xsd:annotation>
+      <xsd:documentation>Query table metadata.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the query table. For example, the name of a predefined query table like TASK or the name of a composite or supplemental query table whose name format is PREFIX.NAME.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="kind" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The kind of the query table. Possible values are COMPOSITE, PREDEFINED, SUPPLEMENTAL.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element minOccurs="0" name="description" type="bct:LocalizedTextsType">
+        <xsd:annotation>
+          <xsd:documentation>The description of the query table.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element minOccurs="0" name="displayName" type="bct:LocalizedTextsType">
+        <xsd:annotation>
+          <xsd:documentation>The display name of the query table.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="locale" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The locale that is calculated for the system variable $LOCALE.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element minOccurs="0" name="locales" type="bct:LocalesType">
+        <xsd:annotation>
+          <xsd:documentation>The locales of available display names and descriptions. An empty array when there are no display names and descriptions.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="primaryQueryTableName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the primary query table. For example, the name of a predefined query table like TASK.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="attributeMetaDataSet" type="bct:AttributeMetaDataSetType">
+        <xsd:annotation>
+          <xsd:documentation>Information about the attributes that are defined on the query table.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="authorizationInfo" type="bct:AuthorizationInfoType">
+        <xsd:annotation>
+          <xsd:documentation>Information about the authorization that is defined for the query table.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="keyAttributeInfoSet" type="bct:AttributeInfoSetType">
+        <xsd:annotation>
+          <xsd:documentation>Information about the key attributes of the query table.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      
+      <xsd:element name="endOfV7003" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    Locales
+  -->
+  <xsd:element name="locales" type="bct:LocalesType"/>
+  <xsd:complexType name="LocalesType">
+    <xsd:annotation>
+      <xsd:documentation>List of locales.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="locale" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    Attribute Info Set
+  -->
+  <xsd:element name="attributeInfoSet" type="bct:AttributeInfoSetType"/>
+  <xsd:complexType name="AttributeInfoSetType">
+    <xsd:annotation>
+      <xsd:documentation>List of query table attribute information elements.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="attributeInfo" type="bct:AttributeInfoType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--
+    AttributeInfo
+  -->
+  <xsd:element name="attributeInfo" type="bct:AttributeInfoType"/>
+  <xsd:complexType name="AttributeInfoType">
+    <xsd:annotation>
+      <xsd:documentation>Query table attribute information.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="type" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The type of the attribute. Possible values are BINARY, BOOLEAN, DECIMAL, ID, NUMBER, STRING, TIMESTAMP. Note that "NUMBER" is returned for enumeration types even though the JAX-WS interface returns instances of enumeration types as strings.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="isArray" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>States whether the attribute is an array.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="sourceAttributeName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the source attribute. </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      
+      <xsd:element name="sourceQueryTableID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The identifier of the query table that is the source of the attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="sourceQueryTableName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the query table that is the source of the attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      
+      <xsd:element name="endOfV7003" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    AttributeMetaDataSet
+  -->
+  <xsd:element name="attributeMetaDataSet" type="bct:AttributeMetaDataSetType"/>
+  <xsd:complexType name="AttributeMetaDataSetType">
+    <xsd:annotation>
+      <xsd:documentation>List of query table attribute metadata objects.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="attributeMetaData" type="bct:AttributeMetaDataType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--
+    AttributeMetaData
+  -->
+  <xsd:element name="attributeMetaData" type="bct:AttributeMetaDataType"/>
+  <xsd:complexType name="AttributeMetaDataType">
+    <xsd:annotation>
+      <xsd:documentation>Query table attribute metadata.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="type" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The type of the attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="isArray" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>States whether the attribute is an array.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element minOccurs="0" name="description" type="bct:LocalizedTextsType">
+        <xsd:annotation>
+          <xsd:documentation>The description of the attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element minOccurs="0" name="displayName" type="bct:LocalizedTextsType">
+        <xsd:annotation>
+          <xsd:documentation>The display name of the attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="sourceAttributeName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the source attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="sourceQueryTableID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The identifier of the query table that is the source of the attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="sourceQueryTableName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the query table that is the source of the attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      
+      <xsd:element name="endOfV7003" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    AuthorizationInfo
+  -->
+  <xsd:element name="authorizationInfo" type="bct:AuthorizationInfoType"/>
+  <xsd:complexType name="AuthorizationInfoType">
+    <xsd:annotation>
+      <xsd:documentation>Query table authorization information.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="authorizationType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The authorization type that is used. Possible values are NONE, INSTANCE_BASED, ROLE_BASED.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="groupsUsed" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>States whether group work items are considered.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="individualsUsed" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>States whether individual work items are considered.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="inheritedWorkItemsUsed" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>States whether inherited work items are considered.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="everybodyUsed" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>States whether everybody work items are considered.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      
+      <xsd:element name="endOfV7003" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    FilterOptions
+  -->
+  <xsd:element name="filterOptions" type="bct:FilterOptionsType"/>
+  <xsd:complexType name="FilterOptionsType">
+    <xsd:annotation>
+      <xsd:documentation>Filter options for query table based queries.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="locale" type="xsd:string" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>The locale to specify the language for localized data such as task descriptions. Note that this value has impact on the calculation of the $LOCALE system variable which may be used in filters and selection criteria. Specify null if the default locale should be used.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="queryCondition" type="xsd:string" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>The query condition to be applied to the query. The syntax must conform to the Query Table Condition Language. Specify null if no additional filtering should be applied.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="selectedAttributes" type="xsd:string" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>Specifies attribute names to indicate which attribute values are to be returned. Each comma separated part of the selectedAttributes must specify an attribute from the query table that is used for the query. If instance-based authorization is required, work item information can be added by specifying attributes of the WORK_ITEM query table. These attributes must be prefixed with 'WI.', for example, 'WI.REASON'. If null is specified, all attributes that are defined on the query table are returned.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="skipCount" type="xsd:integer" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>The number of entities or rows to be ignored and not to be returned to the caller. For example, a value of '5' means that the first 5 qualifying entities or rows are not returned. Use this parameter together with the threshold to implement paging in your client application. Specify null or 0 if no skipCount is required.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="sortAttributes" type="xsd:string" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>Sorts the result set by the values of the attributes you identify - see the Query Table Sort Language. Each comma separated part of the sortAttributes must specify an attribute from the query table that is used for the query. If you identify more that one attribute, the result set is ordered by the values of the first attribute you identify, then by the values of the second attribute, and so on. Specify null if no sorting is required.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="threshold" type="xsd:integer" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>The maximum number of result set entities or rows to be returned from the server to the client. If a threshold is not required, null must be specified. Note that it is not guaranteed that threshold entities are returned when queryEntities is called and when threshold entities are available. In the current implementation it is possible that less than threshold entities are returned.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="timeZone" type="xsd:string" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>The time zone of the timestamp constants in the query condition. If a timezone is not specified, UTC is assumed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    AuthorizationOptions
+  -->
+  <xsd:element name="authorizationOptions" type="bct:AuthorizationOptionsType"/>
+  <xsd:complexType name="AuthorizationOptionsType">
+    <xsd:annotation>
+      <xsd:documentation>Authorizations options for query table based queries.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="groupsUsed" type="xsd:boolean" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>States whether group work items should be considered for a query. Null indicates that the default value of true is to be used for a query.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="individualsUsed" type="xsd:boolean" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>States whether individual work items should be considered for a query. Null indicates that the default value of true is to be used for a query.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="inheritedWorkItemsUsed" type="xsd:boolean" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>States whether inherited work items should be considered for a query. Null indicates that the default value is to be used for a query. The default value is true for a query table of kind composite, false for a query table of kind predefined.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="everybodyUsed" type="xsd:boolean" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>States whether everybody work items should be considered for a query. Null indicates that the default value of true is to be used for a query.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    AdminAuthorizationOptions
+  -->
+  <xsd:element name="adminAuthorizationOptions" type="bct:AdminAuthorizationOptionsType"/>
+  <xsd:complexType name="AdminAuthorizationOptionsType">
+    <xsd:annotation>
+      <xsd:documentation>Admin authorizations options for query table based queries.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="bct:AuthorizationOptionsType">
+        <xsd:sequence>
+
+          <xsd:element name="onBehalfUser" type="xsd:string" nillable="true">
+            <xsd:annotation>
+              <xsd:documentation>The user the query is to be executed for. If no user is specified, a query is executed as administrator. Note that this value overwrites the $USER system variable which may be specified in filters and selection criteria.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!--
+    EntityResultSet
+  -->
+  <xsd:element name="entityResultSet" type="bct:EntityResultSetType"/>
+  <xsd:complexType name="EntityResultSetType">
+    <xsd:annotation>
+      <xsd:documentation>Provides the results of an entity-based query against a query table.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="queryTableName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the query table that is associated with this query result.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="entityTypeName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The type of entities that are returned as the result of the query.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="locale" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The locale that is calculated for the system variable $LOCALE.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="entityInfo" type="bct:EntityInfoType">
+        <xsd:annotation>
+          <xsd:documentation>Type information of the entities.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="entities" type="bct:EntitiesType">
+        <xsd:annotation>
+          <xsd:documentation>The entities that are contained in this result set.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      
+      <xsd:element name="endOfV7003" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    EntityInfo
+  -->
+  <xsd:element name="entityInfo" type="bct:EntityInfoType"/>
+  <xsd:complexType name="EntityInfoType">
+    <xsd:annotation>
+      <xsd:documentation>Type information for query table entities.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="entityTypeName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The type of entity.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="keyAttributeInfoSet" type="bct:AttributeInfoSetType">
+        <xsd:annotation>
+          <xsd:documentation>Information about the key attributes of the entity.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="attributeInfoSet" type="bct:AttributeInfoSetType">
+        <xsd:annotation>
+          <xsd:documentation>Information about the selected attributes of the entity.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      
+      <xsd:element name="endOfV7003" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    Entities
+  -->
+  <xsd:element name="entities" type="bct:EntitiesType"/>
+  <xsd:complexType name="EntitiesType">
+    <xsd:annotation>
+      <xsd:documentation>List of query table entities.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="entity" type="bct:EntityType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <!--
+    Entity
+  -->
+  <xsd:element name="entity" type="bct:EntityType"/>
+  <xsd:complexType name="EntityType">
+    <xsd:annotation>
+      <xsd:documentation>Query table entity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="attributeValues" type="bct:AttributeValuesType">
+        <xsd:annotation>
+          <xsd:documentation>The value of the specified attribute or array attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="keyAttributeValues" type="bct:AttributeValuesType">
+        <xsd:annotation>
+          <xsd:documentation>The values of the key attributes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      
+      <xsd:element name="endOfV7003" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!--
+    Attribute Values
+  -->
+  <xsd:element name="attributeValues" type="bct:AttributeValuesType"/>
+  <xsd:complexType name="AttributeValuesType">
+    <xsd:annotation>
+      <xsd:documentation>List of entity attribute values.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="attributeValue" type="bct:AttributeValueType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <!--
+    Attribute Value
+  -->
+  <xsd:element name="attributeValue" type="bct:AttributeValueType"/>
+  <xsd:complexType name="AttributeValueType">
+    <xsd:annotation>
+      <xsd:documentation>Entity attribute value information.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the attribute.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="value" type="xsd:anySimpleType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>The value of the attribute. Depending on the attribute type, the xsi:type of the returned value element is set to xsd:base64Binary (for attribute type BINARY), xsd:boolean (for BOOLEAN), xsd:double (for DECIMAL), xsd:string (for ID), xsd:long (for NUMBER attributes not representing enum values), xsd:string (for NUMBER attributes representing enum values), xsd:string (for STRING), and xsd:dateTime (for TIMESTAMP), respectively.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="endOfV7003" type="bct:SeparatorType"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

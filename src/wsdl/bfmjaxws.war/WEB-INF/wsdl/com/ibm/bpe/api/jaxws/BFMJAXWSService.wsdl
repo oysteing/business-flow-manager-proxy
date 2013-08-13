@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="BFMJAXWSService" targetNamespace="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0/Binding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bps="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpsb="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0/Binding" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:import namespace="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0" location="BFMJAXWSInterface.wsdl">
+    </wsdl:import>
+  <wsdl:binding name="BFMJAXWSBinding" type="bps:BFMJAXWSPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="queryProcessTemplates">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="queryProcessTemplatesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryProcessTemplatesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="queryProcessTemplatesFault">
+        <soap:fault name="queryProcessTemplatesFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="query">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="queryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="queryFault">
+        <soap:fault name="queryFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="queryAll">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="queryAllRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryAllResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="queryAllFault">
+        <soap:fault name="queryAllFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActivityInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getActivityInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getActivityInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getActivityInstanceFault">
+        <soap:fault name="getActivityInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getParticipatingTaskID">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getParticipatingTaskIDRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getParticipatingTaskIDResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getParticipatingTaskIDFault">
+        <soap:fault name="getParticipatingTaskIDFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getProcessTemplate">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getProcessTemplateRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProcessTemplateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getProcessTemplateFault">
+        <soap:fault name="getProcessTemplateFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getQueryProperties">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getQueryPropertiesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getQueryPropertiesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getQueryPropertiesFault">
+        <soap:fault name="getQueryPropertiesFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getProcessInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getProcessInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProcessInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getProcessInstanceFault">
+        <soap:fault name="getProcessInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInputMessageForProcessInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getInputMessageForProcessInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInputMessageForProcessInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getInputMessageForProcessInstanceFault">
+        <soap:fault name="getInputMessageForProcessInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInputMessageForActivityInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getInputMessageForActivityInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInputMessageForActivityInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getInputMessageForActivityInstanceFault">
+        <soap:fault name="getInputMessageForActivityInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getOutputMessageForProcessInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getOutputMessageForProcessInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOutputMessageForProcessInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getOutputMessageForProcessInstanceFault">
+        <soap:fault name="getOutputMessageForProcessInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getOutputMessageForActivityInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getOutputMessageForActivityInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOutputMessageForActivityInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getOutputMessageForActivityInstanceFault">
+        <soap:fault name="getOutputMessageForActivityInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFaults">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getFaultsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFaultsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getFaultsFault">
+        <soap:fault name="getFaultsFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFaultMessageForProcessInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getFaultMessageForProcessInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFaultMessageForProcessInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getFaultMessageForProcessInstanceFault">
+        <soap:fault name="getFaultMessageForProcessInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFaultMessageForActivityInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getFaultMessageForActivityInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFaultMessageForActivityInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getFaultMessageForActivityInstanceFault">
+        <soap:fault name="getFaultMessageForActivityInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getVariableOfProcessInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getVariableOfProcessInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVariableOfProcessInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getVariableOfProcessInstanceFault">
+        <soap:fault name="getVariableOfProcessInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getVariableOfActivityInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getVariableOfActivityInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVariableOfActivityInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getVariableOfActivityInstanceFault">
+        <soap:fault name="getVariableOfActivityInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setVariableForProcessInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="setVariableForProcessInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setVariableForProcessInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="setVariableForProcessInstanceFault">
+        <soap:fault name="setVariableForProcessInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setVariableForActivityInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="setVariableForActivityInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setVariableForActivityInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="setVariableForActivityInstanceFault">
+        <soap:fault name="setVariableForActivityInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMessageTextOfException">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getMessageTextOfExceptionRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMessageTextOfExceptionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getMessageTextOfExceptionFault">
+        <soap:fault name="getMessageTextOfExceptionFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomPropertiesOfProcessTemplate">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCustomPropertiesOfProcessTemplateRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCustomPropertiesOfProcessTemplateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getCustomPropertiesOfProcessTemplateFault">
+        <soap:fault name="getCustomPropertiesOfProcessTemplateFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomPropertiesOfProcessInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCustomPropertiesOfProcessInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCustomPropertiesOfProcessInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getCustomPropertiesOfProcessInstanceFault">
+        <soap:fault name="getCustomPropertiesOfProcessInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomPropertiesOfActivityInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCustomPropertiesOfActivityInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCustomPropertiesOfActivityInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getCustomPropertiesOfActivityInstanceFault">
+        <soap:fault name="getCustomPropertiesOfActivityInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setCustomPropertyForProcessInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="setCustomPropertyForProcessInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setCustomPropertyForProcessInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="setCustomPropertyForProcessInstanceFault">
+        <soap:fault name="setCustomPropertyForProcessInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setCustomPropertyForActivityInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="setCustomPropertyForActivityInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setCustomPropertyForActivityInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="setCustomPropertyForActivityInstanceFault">
+        <soap:fault name="setCustomPropertyForActivityInstanceFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setCustomPropertyUsingActivityName">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="setCustomPropertyUsingActivityNameRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setCustomPropertyUsingActivityNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="setCustomPropertyUsingActivityNameFault">
+        <soap:fault name="setCustomPropertyUsingActivityNameFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="completeAndClaimSuccessor">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="completeAndClaimSuccessorRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="completeAndClaimSuccessorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="completeAndClaimSuccessorFault">
+        <soap:fault name="completeAndClaimSuccessorFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="call">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="callRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="callResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="callBusinessFault">
+        <soap:fault name="callBusinessFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="callFault">
+        <soap:fault name="callFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceTerminate">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="forceTerminateRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="forceTerminateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="forceTerminateFault">
+        <soap:fault name="forceTerminateFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="deleteFault">
+        <soap:fault name="deleteFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="restart">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="restartRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="restartResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="restartFault">
+        <soap:fault name="restartFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="resume">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="resumeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="resumeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="resumeFault">
+        <soap:fault name="resumeFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="suspend">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="suspendRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="suspendResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="suspendFault">
+        <soap:fault name="suspendFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="suspendFor">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="suspendForRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="suspendForResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="suspendForFault">
+        <soap:fault name="suspendForFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="suspendUntil">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="suspendUntilRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="suspendUntilResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="suspendUntilFault">
+        <soap:fault name="suspendUntilFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createStoredQuery">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="createStoredQueryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createStoredQueryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="createStoredQueryFault">
+        <soap:fault name="createStoredQueryFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteStoredQuery">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteStoredQueryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteStoredQueryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="deleteStoredQueryFault">
+        <soap:fault name="deleteStoredQueryFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStoredQuery">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getStoredQueryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStoredQueryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getStoredQueryFault">
+        <soap:fault name="getStoredQueryFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStoredQueryNames">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getStoredQueryNamesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStoredQueryNamesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getStoredQueryNamesFault">
+        <soap:fault name="getStoredQueryNamesFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="executeStoredQuery">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="executeStoredQueryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="executeStoredQueryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="executeStoredQueryFault">
+        <soap:fault name="executeStoredQueryFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceRetry">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="forceRetryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="forceRetryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="forceRetryFault">
+        <soap:fault name="forceRetryFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceRetryWithInput">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="forceRetryWithInputRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="forceRetryWithInputResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="forceRetryWithInputFault">
+        <soap:fault name="forceRetryWithInputFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceComplete">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="forceCompleteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="forceCompleteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="forceCompleteFault">
+        <soap:fault name="forceCompleteFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceCompleteWithOutput">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="forceCompleteWithOutputRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="forceCompleteWithOutputResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="forceCompleteWithOutputFault">
+        <soap:fault name="forceCompleteWithOutputFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceCompleteWithFault">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="forceCompleteWithFaultRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="forceCompleteWithFaultResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="forceCompleteWithFaultFault">
+        <soap:fault name="forceCompleteWithFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStartActivities">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getStartActivitiesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStartActivitiesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getStartActivitiesFault">
+        <soap:fault name="getStartActivitiesFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWaitingActivities">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getWaitingActivitiesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getWaitingActivitiesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getWaitingActivitiesFault">
+        <soap:fault name="getWaitingActivitiesFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="sendMessageRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="sendMessageFault">
+        <soap:fault name="sendMessageFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveEventHandlers">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getActiveEventHandlersRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getActiveEventHandlersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getActiveEventHandlersFault">
+        <soap:fault name="getActiveEventHandlersFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="callAsync">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="callAsyncRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="callAsyncResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="callAsyncFault">
+        <soap:fault name="callAsyncFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findQueryTableMetaData">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="findQueryTableMetaDataRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findQueryTableMetaDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="findQueryTableMetaDataFault">
+        <soap:fault name="findQueryTableMetaDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getQueryTableMetaData">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getQueryTableMetaDataRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getQueryTableMetaDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getQueryTableMetaDataFault">
+        <soap:fault name="getQueryTableMetaDataFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="initiateAndClaimFirst">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="initiateAndClaimFirstRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="initiateAndClaimFirstResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="initiateAndClaimFirstFault">
+        <soap:fault name="initiateAndClaimFirstFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="queryEntities">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="queryEntitiesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryEntitiesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="queryEntitiesFault">
+        <soap:fault name="queryEntitiesFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="queryEntityCount">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="queryEntityCountRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryEntityCountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="queryEntityCountFault">
+        <soap:fault name="queryEntityCountFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BFMJAXWSService">
+    <wsdl:port name="BFMJAXWSPort" binding="bpsb:BFMJAXWSBinding">
+      <soap:address location="http://10.0.0.6:9080/BFMJAXWSAPI/BFMJAXWSService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

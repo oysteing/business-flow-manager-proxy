@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BEGIN COPYRIGHT
+  *************************************************************************
+  
+   Licensed Materials - Property of IBM
+   
+   Product 5655-FLW (C) COPYRIGHT International Business Machines Corp., 2009, 2010
+   US Government Users Restricted Rights - Use, duplication or 
+   disclosure restricted by GSA ADP Schedule Contract 
+   with IBM Corp.
+  
+  ************************************************************************/
+  END COPYRIGHT
+-->
+<xsd:schema targetNamespace="http://www.ibm.com/xmlns/prod/websphere/business-process/types/7.0" xmlns:bct="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" xmlns:bpt="http://www.ibm.com/xmlns/prod/websphere/business-process/types/7.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:import namespace="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" schemaLocation="BPCDataTypes.xsd"/>
+
+	<!--
+		ProcessTemplates
+	-->
+	<xsd:element name="processTemplates" type="bpt:ProcessTemplatesType"/>
+	<xsd:complexType name="ProcessTemplatesType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="processTemplate" type="bpt:ProcessTemplateType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--
+		ProcessTemplate
+	-->
+	<xsd:element name="processTemplate" type="bpt:ProcessTemplateType"/>
+	<xsd:complexType name="ProcessTemplateType">
+		<xsd:sequence>
+			<xsd:element name="ptid" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The object identifier</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the process template</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="namespaceName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The target namespace of the process template</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="validFromTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The time the process template became or becomes valid.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="displayName" type="bct:LocalizedTextsType">
+				<xsd:annotation>
+					<xsd:documentation>The display name of the process template.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="description" type="bct:LocalizedTextsType">
+				<xsd:annotation>
+					<xsd:documentation>The description of the process template</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="applicationName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the application the process template is part of.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="version" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>A user-specified version of the process template</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="schemaVersion" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The version of the XML schema that describes the process template. Possible values are: SCHEMA_6_0</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="state" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>States whether the process template is started or stopped. Possible states are: STATE_STARTED, STATE_STOPPED.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="executionMode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>States whether the process template can be executed as a microflow or as a long-running process. Possible executions modes are: EXECUTION_MODE_MICROFLOW,
+						EXECUTION_MODE_LONG_RUNNING.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="inputType" type="xsd:QName">
+				<xsd:annotation>
+					<xsd:documentation>The input type of the process.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="creationTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The creation time of the process template</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="lastModificationTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The last time a property of the process template changed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="autonomy" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>States whether an instance of the process template runs dependently of a potential parent or not. Possible values are: AUTONOMY_PEER, AUTONOMY_CHILD,
+						AUTONOMY_NOT_APPLICABLE.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isCompensationDefined" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>States whether an instance of the process template can be compensated.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isBusinessRelevant" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>States whether a process instance derived from this template is business relevant.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="autoDeletionMode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>
+						States whether an instance of the process template is automatically deleted when it reaches an end execution state. End execution states are STATE_FINISHED, STATE_COMPENSATED, STATE_TERMINATED, or
+						STATE_FAILED. STATE_FAILED is
+						only an end
+						execution state if no compensation is defined Possible values are: AUTO_DELETE_YES: States that the process instance is deleted when it reaches any end state. AUTO_DELETE_NO: States that the process
+						instance is not deleted when it
+						reaches an
+						end state. AUTO_DELETE_ON_SUCCESSFUL_COMPLETION: States that the process instance is only deleted when it reaches the "finished" state.
+          </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="adminTaskTemplateID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>ID of the associated administration task template.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="outputType" type="xsd:QName">
+				<xsd:annotation>
+					<xsd:documentation>The output type of the process.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isContinueOnError" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>States whether process instances derived from this template stop in case of an unhandled error or not.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+			<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!--
+		ProcessInstance
+	-->
+	<xsd:element name="processInstance" type="bpt:ProcessInstanceType"/>
+	<xsd:complexType name="ProcessInstanceType">
+		<xsd:sequence>
+			<xsd:element name="piid" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The object identifier.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the process instance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="description" type="bct:LocalizedTextsType">
+				<xsd:annotation>
+					<xsd:documentation>The description of the process instance. If there is no process instance description, it is the description of the associated process template.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="processTemplateID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The object ID of the process template this instance is derived from.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="processTemplateName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the process template this instance is derived from.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="processTemplateDisplayName" type="bct:LocalizedTextsType">
+				<xsd:annotation>
+					<xsd:documentation>The display name of the process template.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="creationTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The creation time of the process instance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="startTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The start time of the process instance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="completionTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The completion time of the process instance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="lastModificationTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The last time a property of the process instance changed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="lastStateChangeTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The last time the execution state of the process instance changed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="executionState" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The execution state of the process instance. Possible execution states are: STATE_COMPENSATED, STATE_COMPENSATING, STATE_COMPENSATION_FAILED, STATE_DELETED, STATE_FAILED,
+						STATE_FAILING, STATE_FINISHED, STATE_INDOUBT,
+						STATE_READY, STATE_RUNNING, STATE_SUSPENDED, STATE_TERMINATED, STATE_TERMINATING.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="topLevelProcessInstanceID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The object ID of the topmost process instance in the hierarchy. If the current process instance is the topmost process instance itself, it is the object ID of the current
+						process instance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="topLevelProcessInstanceName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the top-most process instance in the hierarchy. If the process instance is the topmost process instance itself, it is the name of the current process instance.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="starter" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The starter of the process instance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="faultName" type="xsd:QName">
+				<xsd:annotation>
+					<xsd:documentation>The name of the fault if the process instance ended with a fault.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="adminTaskID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the associated administrative task.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isBusinessRelevant" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>States whether the process instance is business relevant.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="resumptionTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The actual time when this process will be automatically resumed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="inputType" type="xsd:QName">
+				<xsd:annotation>
+					<xsd:documentation>The input type of the process.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="outputType" type="xsd:QName">
+				<xsd:annotation>
+					<xsd:documentation>The output type of the process.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="compensationSphereName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Name of the associated compensation sphere.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="parentActivityInstanceID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>ID of the parent activity instance, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="parentProcessInstanceID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>ID of the parent process instance, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="parentProcessInstanceName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Name of the parent process instance, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="unhandledFault" type="bct:BusinessFaultType">
+				<xsd:annotation>
+					<xsd:documentation>The reason why the process instance failed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="validFromTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The time the process template became or becomes valid.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isCompensationDefined" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>States whether the process instance can be compensated.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isContinueOnError" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>States whether process instances derived from this template stop in case of an unhandled error or not.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isMigrated" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>States whether the process instance has been migrated.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+			<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!--
+		InboundOperationTemplates
+	-->
+	<xsd:element name="inboundOperationTemplates" type="bpt:InboundOperationTemplatesType"/>
+	<xsd:complexType name="InboundOperationTemplatesType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="inboundOperationTemplate" type="bpt:InboundOperationTemplateType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--
+		InboundOperationTemplate
+	-->
+	<xsd:element name="inboundOperationTemplate" type="bpt:InboundOperationTemplateType"/>
+	<xsd:complexType name="InboundOperationTemplateType">
+		<xsd:annotation>
+			<xsd:documentation>An inbound operation template is a description of a service, a business process interacts with. Interactions are either inbound receive or pick activities or outbound reply or
+				invoke activities.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="partnerLinkName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the partner.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="portType" type="xsd:QName">
+				<xsd:annotation>
+					<xsd:documentation>The port type of the operation.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="operationName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the operation.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="processTemplateID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the process template this activity is part of.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="processTemplateName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the process template this activity is part of.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="activityName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the associated activity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="activityDisplayName" type="bct:LocalizedTextsType">
+				<xsd:annotation>
+					<xsd:documentation>The display name of the associated activity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="activityDescription" type="bct:LocalizedTextsType">
+				<xsd:annotation>
+					<xsd:documentation>The description of the associated activity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="inputType" type="xsd:QName">
+				<xsd:annotation>
+					<xsd:documentation>The type of the input.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isTwoWayOperation" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Indicates whether the service to be called is a two-way operation or not.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="activityTemplateID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the associated activity template.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="serviceTemplateID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the associated activity service template.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="taskTemplateID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the associated task template.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+			<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!--
+		ActivityInstances
+	-->
+	<xsd:element name="activityInstances" type="bpt:ActivityInstancesType"/>
+	<xsd:complexType name="ActivityInstancesType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="activityInstance" type="bpt:ActivityInstanceType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--
+		ActivityInstance
+	-->
+	<xsd:element name="activityInstance" type="bpt:ActivityInstanceType"/>
+	<xsd:complexType name="ActivityInstanceType">
+		<xsd:sequence>
+			<xsd:element name="aiid" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The object identifier.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the activity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="displayName" type="bct:LocalizedTextsType">
+				<xsd:annotation>
+					<xsd:documentation>The display name of the activity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="description" type="bct:LocalizedTextsType">
+				<xsd:annotation>
+					<xsd:documentation>The description of the activity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="kind" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The kind of the activity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="executionState" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The execution state of the activity instance. Possible states are: STATE_CLAIMED, STATE_EXPIRED, STATE_FAILED, STATE_FAILING, STATE_FINISHED, STATE_INACTIVE,
+						STATE_PROCESSING_UNDO, STATE_READY, STATE_RUNNING, STATE_SKIPPED,
+						STATE_STOPPED, STATE_TERMINATED, STATE_TERMINATING, STATE_WAITING.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="processInstanceID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The object ID of the containing process instance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="processInstanceName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the process instance the activity belongs to.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="processTemplateID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the process template that contains the activity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="processTemplateName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the process template that contains the activity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="startTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The start time of the activity instance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="activationTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The activation time of the activity instance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="completionTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The completion time of the activity instance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="lastModificationTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The last time a property of the activity instance changed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="lastStateChangeTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The last time the execution state of the activity instance changed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="expirationTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The time when the activity instance will expire or expired.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="inputType" type="xsd:QName">
+				<xsd:annotation>
+					<xsd:documentation>The type of the input.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="outputType" type="xsd:QName">
+				<xsd:annotation>
+					<xsd:documentation>The type of the output message.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="unhandledFault" type="bct:BusinessFaultType">
+				<xsd:annotation>
+					<xsd:documentation>The reason why the activity is in the Stopped execution state.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="faults" type="bct:FaultsType">
+				<xsd:annotation>
+					<xsd:documentation>The faults associated to the activity instance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isBusinessRelevant" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>States whether the activity instance is business relevant.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="taskID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the associated to-do task, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="adminTaskID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the associated administrative task, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="activityTemplateID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the associated activity template.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="applicationName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the application the activity is part of.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="enclosingForEachID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the enclosing forEach activity, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="eventHandlerInstanceID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the enclosing event handler instance, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="invokedInstanceID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of a process or task instance invoked by this activity, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="invokedInstanceType" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The type of object invoked by this activity, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="owner" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The owner of the activity instance, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="previousExpirationTime" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>The time the activity instance expired for the first time.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="processAdminTaskID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the administrative task for the process, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="scopeID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the enclosing scope, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="scopeTemplateID" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The ID of the enclosing scope template, if any.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="stopReason" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The reason why the activity is in the Stopped execution state. Possible values are: STOP_REASON_UNSPECIFIED, STOP_REASON_ACTIVATION_FAILED,
+						STOP_REASON_IMPLEMENTATION_FAILED, STOP_REASON_FOLLOW_ON_NAVIGATION_FAILED, or
+						STOP_REASON_EXIT_CONDITION_FALSE.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="subState" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Returns the sub state of the activity instance. Possible values are: SUB_STATE_NONE, SUB_STATE_EXPIRING, SUB_STATE_SKIPPING, SUB_STATE_RESTARTING, SUB_STATE_FINISHING,
+						SUB_STATE_FAILING. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isContinueOnError" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>States whether process instances derived from this template stop in case of an unhandled error or not.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isSkipRequested" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>States whether the activity instance is to be skipped when reached during navigation.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+			<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!--
+		QueryProperties
+	-->
+	<xsd:element name="queryProperties" type="bpt:QueryPropertiesType"/>
+	<xsd:complexType name="QueryPropertiesType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="queryProperty" type="bpt:QueryPropertyType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--
+		QueryProperty
+	-->
+	<xsd:element name="queryProperty" type="bpt:QueryPropertyType"/>
+	<xsd:complexType name="QueryPropertyType">
+		<xsd:annotation>
+			<xsd:documentation>The property of a variable that can be queried.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="variableName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the process-level variable that contains properties that can be used in queries.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the property.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="namespaceName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The namespace of the property. For properties that are defined inline, it is the namespace of the BPEL process.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="mappedType" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The type that can be used in queries. Possible values are: TYPE_GENERIC, TYPE_STRING, TYPE_NUMBER, TYPE_DECIMAL, TYPE_TIMESTAMP.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="type" type="xsd:QName">
+				<xsd:annotation>
+					<xsd:documentation>The QName of the property type. It can be an xsd type or a user-defined type.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+			<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!--
+		CompleteAndClaimSuccessorResult
+	-->
+	<xsd:element name="completeAndClaimSuccessorResult" type="bpt:CompleteAndClaimSuccessorResultType"/>
+	<xsd:complexType name="CompleteAndClaimSuccessorResultType">
+		<xsd:annotation>
+			<xsd:documentation>The result of a completeAndClaimSuccessor() call, that is, a description of the claimed successor activity instance.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="aiid" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The object identifier of the activity that has been claimed. If no activity has been claimed, the identifier is not set.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>			
+			<xsd:element minOccurs="0" name="activityName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of the activity that has been claimed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="atid" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The object identifier of the activity template that is associated to the claimed activity. If no activity has been claimed, the identifier is not set.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="input" type="bct:UserDataType">
+				<xsd:annotation>
+					<xsd:documentation>The input message of the claimed activity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+			<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!--
+		VariableData
+	-->
+	<xsd:element name="variableData" type="bpt:VariableDataType"/>
+	<xsd:complexType name="VariableDataType">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="tValue" type="xsd:anyType">
+				<xsd:annotation>
+					<xsd:documentation>The variable value of XML schema type variables.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="eValue" type="bct:UserDataType">
+				<xsd:annotation>
+					<xsd:documentation>The variable value of XML schema element variables.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+			<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<!--
+		InitiateAndClaimFirstResult
+	-->
+	<xsd:element name="initiateAndClaimFirstResult" type="bpt:InitiateAndClaimFirstResultType"/>
+	<xsd:complexType name="InitiateAndClaimFirstResultType">
+		<xsd:annotation>
+			<xsd:documentation>The result of a initiateAndClaimFirstResult() call, that is, a description of the claimed initial activity instance.</xsd:documentation>
+		</xsd:annotation>
+	    	<xsd:sequence>
+	      		<xsd:element name="aiid" type="xsd:string">
+	      			<xsd:annotation>
+					<xsd:documentation>The object identifier of the activity that has been claimed. If no activity has been claimed, the identifier is not set.</xsd:documentation>
+				</xsd:annotation>
+	      		</xsd:element>
+	      		<xsd:element minOccurs="0" name="activityName" type="xsd:string">
+	      			<xsd:annotation>
+					<xsd:documentation>The name of the activity that has been claimed.</xsd:documentation>
+				</xsd:annotation>
+	      		</xsd:element>	      		
+	      		<xsd:element name="atid" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The object identifier of the activity template that is associated to the claimed activity. If no activity has been claimed, the identifier is not set.</xsd:documentation>
+				</xsd:annotation>	      		
+	      		</xsd:element>	      		
+	      		<xsd:element minOccurs="0" name="input" type="bct:UserDataType">
+				<xsd:annotation>
+					<xsd:documentation>The input message of the claimed activity.</xsd:documentation>
+				</xsd:annotation>	      		
+	      		</xsd:element>	      			      		
+	      		<xsd:element name="piid" type="xsd:string">
+	      			<xsd:annotation>
+					<xsd:documentation>The object identifier of the process instance that has been initiated. If no instance has been initiated, the identifier is not set.</xsd:documentation>
+				</xsd:annotation>
+	      		</xsd:element>	      		
+	      		<xsd:element name="endOfV7000" type="bct:SeparatorType"/>
+			<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+	    	</xsd:sequence>
+    	</xsd:complexType>
+	
+</xsd:schema>

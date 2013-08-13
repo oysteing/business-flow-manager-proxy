@@ -1,0 +1,2015 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="BFMJAXWSInterface" targetNamespace="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0" xmlns:bct="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bps="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0" xmlns:bpt="http://www.ibm.com/xmlns/prod/websphere/business-process/types/7.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0" xmlns:bct="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" xmlns:bps="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0" xmlns:bpt="http://www.ibm.com/xmlns/prod/websphere/business-process/types/7.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+      <xsd:import namespace="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" schemaLocation="BPCDataTypes.xsd"/>
+
+      <xsd:include schemaLocation="BFMJAXWSInterface.xsd"/>
+
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="processFaultMsg">
+    <wsdl:part name="processFault" element="bct:bpcFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInputMessageForActivityInstanceRequestMsg">
+    <wsdl:part name="getInputMessageForActivityInstanceParameters" element="bps:getInputMessageForActivityInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStoredQueryResponseMsg">
+    <wsdl:part name="getStoredQueryResult" element="bps:getStoredQueryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryEntitiesResponseMsg">
+    <wsdl:part name="queryEntitiesResult" element="bps:queryEntitiesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="callResponseMsg">
+    <wsdl:part name="callResult" element="bps:callResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStartActivitiesRequestMsg">
+    <wsdl:part name="getStartActivitiesParameters" element="bps:getStartActivities">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceRetryWithInputRequestMsg">
+    <wsdl:part name="forceRetryWithInputParameters" element="bps:forceRetryWithInput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryEntityCountResponseMsg">
+    <wsdl:part name="queryEntityCountResult" element="bps:queryEntityCountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryAllResponseMsg">
+    <wsdl:part name="queryAllResult" element="bps:queryAllResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setVariableForProcessInstanceResponseMsg">
+    <wsdl:part name="setVariableForProcessInstanceResult" element="bps:setVariableForProcessInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setCustomPropertyForProcessInstanceResponseMsg">
+    <wsdl:part name="setCustomPropertyForProcessInstanceResult" element="bps:setCustomPropertyForProcessInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setCustomPropertyUsingActivityNameRequestMsg">
+    <wsdl:part name="setCustomPropertyUsingActivityNameParameters" element="bps:setCustomPropertyUsingActivityName">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOutputMessageForActivityInstanceResponseMsg">
+    <wsdl:part name="getOutputMessageForActivityInstanceResult" element="bps:getOutputMessageForActivityInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMessageTextOfExceptionResponseMsg">
+    <wsdl:part name="getMessageTextOfExceptionResult" element="bps:getMessageTextOfExceptionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createStoredQueryResponseMsg">
+    <wsdl:part name="createStoredQueryResult" element="bps:createStoredQueryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOutputMessageForProcessInstanceResponseMsg">
+    <wsdl:part name="getOutputMessageForProcessInstanceResult" element="bps:getOutputMessageForProcessInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVariableOfActivityInstanceResponseMsg">
+    <wsdl:part name="getVariableOfActivityInstanceResult" element="bps:getVariableOfActivityInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFaultMessageForProcessInstanceRequestMsg">
+    <wsdl:part name="getFaultMessageForProcessInstanceParameters" element="bps:getFaultMessageForProcessInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiveEventHandlersResponseMsg">
+    <wsdl:part name="getActiveEventHandlersResult" element="bps:getActiveEventHandlersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setCustomPropertyForProcessInstanceRequestMsg">
+    <wsdl:part name="setCustomPropertyForProcessInstanceParameters" element="bps:setCustomPropertyForProcessInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFaultMessageForActivityInstanceResponseMsg">
+    <wsdl:part name="getFaultMessageForActivityInstanceResult" element="bps:getFaultMessageForActivityInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryAllRequestMsg">
+    <wsdl:part name="queryAllParameters" element="bps:queryAll">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceTerminateResponseMsg">
+    <wsdl:part name="forceTerminateResult" element="bps:forceTerminateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendMessageRequestMsg">
+    <wsdl:part name="sendMessageParameters" element="bps:sendMessage">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInputMessageForProcessInstanceRequestMsg">
+    <wsdl:part name="getInputMessageForProcessInstanceParameters" element="bps:getInputMessageForProcessInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActivityInstanceRequestMsg">
+    <wsdl:part name="getActivityInstanceParameters" element="bps:getActivityInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="executeStoredQueryResponseMsg">
+    <wsdl:part name="executeStoredQueryResult" element="bps:executeStoredQueryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceCompleteResponseMsg">
+    <wsdl:part name="forceCompleteResult" element="bps:forceCompleteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setCustomPropertyForActivityInstanceRequestMsg">
+    <wsdl:part name="setCustomPropertyForActivityInstanceParameters" element="bps:setCustomPropertyForActivityInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getParticipatingTaskIDRequestMsg">
+    <wsdl:part name="getParticipatingTaskIDParameters" element="bps:getParticipatingTaskID">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendMessageResponseMsg">
+    <wsdl:part name="sendMessageResult" element="bps:sendMessageResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="callAsyncResponseMsg">
+    <wsdl:part name="callAsyncResult" element="bps:callAsyncResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFaultMessageForActivityInstanceRequestMsg">
+    <wsdl:part name="getFaultMessageForActivityInstanceParameters" element="bps:getFaultMessageForActivityInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createStoredQueryRequestMsg">
+    <wsdl:part name="createStoredQueryParameters" element="bps:createStoredQuery">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setVariableForActivityInstanceRequestMsg">
+    <wsdl:part name="setVariableForActivityInstanceParameters" element="bps:setVariableForActivityInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceCompleteWithOutputResponseMsg">
+    <wsdl:part name="forceCompleteWithOutputResult" element="bps:forceCompleteWithOutputResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="restartResponseMsg">
+    <wsdl:part name="restartResult" element="bps:restartResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setCustomPropertyUsingActivityNameResponseMsg">
+    <wsdl:part name="setCustomPropertyUsingActivityNameResult" element="bps:setCustomPropertyUsingActivityNameResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomPropertiesOfProcessTemplateResponseMsg">
+    <wsdl:part name="getCustomPropertiesOfProcessTemplateResult" element="bps:getCustomPropertiesOfProcessTemplateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVariableOfActivityInstanceRequestMsg">
+    <wsdl:part name="getVariableOfActivityInstanceParameters" element="bps:getVariableOfActivityInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setCustomPropertyForActivityInstanceResponseMsg">
+    <wsdl:part name="setCustomPropertyForActivityInstanceResult" element="bps:setCustomPropertyForActivityInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceRetryWithInputResponseMsg">
+    <wsdl:part name="forceRetryWithInputResult" element="bps:forceRetryWithInputResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="initiateAndClaimFirstRequestMsg">
+    <wsdl:part name="initiateAndClaimFirstParameters" element="bps:initiateAndClaimFirst">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryEntityCountRequestMsg">
+    <wsdl:part name="queryEntityCountParameters" element="bps:queryEntityCount">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="suspendRequestMsg">
+    <wsdl:part name="suspendParameters" element="bps:suspend">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomPropertiesOfActivityInstanceResponseMsg">
+    <wsdl:part name="getCustomPropertiesOfActivityInstanceResult" element="bps:getCustomPropertiesOfActivityInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setVariableForActivityInstanceResponseMsg">
+    <wsdl:part name="setVariableForActivityInstanceResult" element="bps:setVariableForActivityInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="suspendForResponseMsg">
+    <wsdl:part name="suspendForResult" element="bps:suspendForResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStoredQueryRequestMsg">
+    <wsdl:part name="getStoredQueryParameters" element="bps:getStoredQuery">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStoredQueryNamesRequestMsg">
+    <wsdl:part name="getStoredQueryNamesParameters" element="bps:getStoredQueryNames">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFaultsResponseMsg">
+    <wsdl:part name="getFaultsResult" element="bps:getFaultsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueryTableMetaDataRequestMsg">
+    <wsdl:part name="getQueryTableMetaDataParameters" element="bps:getQueryTableMetaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOutputMessageForActivityInstanceRequestMsg">
+    <wsdl:part name="getOutputMessageForActivityInstanceParameters" element="bps:getOutputMessageForActivityInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponseMsg">
+    <wsdl:part name="deleteResult" element="bps:deleteResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="completeAndClaimSuccessorRequestMsg">
+    <wsdl:part name="completeAndClaimSuccessorParameters" element="bps:completeAndClaimSuccessor">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomPropertiesOfProcessInstanceResponseMsg">
+    <wsdl:part name="getCustomPropertiesOfProcessInstanceResult" element="bps:getCustomPropertiesOfProcessInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceCompleteWithFaultResponseMsg">
+    <wsdl:part name="forceCompleteWithFaultResult" element="bps:forceCompleteWithFaultResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVariableOfProcessInstanceRequestMsg">
+    <wsdl:part name="getVariableOfProcessInstanceParameters" element="bps:getVariableOfProcessInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceCompleteWithOutputRequestMsg">
+    <wsdl:part name="forceCompleteWithOutputParameters" element="bps:forceCompleteWithOutput">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVariableOfProcessInstanceResponseMsg">
+    <wsdl:part name="getVariableOfProcessInstanceResult" element="bps:getVariableOfProcessInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueryPropertiesRequestMsg">
+    <wsdl:part name="getQueryPropertiesParameters" element="bps:getQueryProperties">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="initiateAndClaimFirstResponseMsg">
+    <wsdl:part name="initiateAndClaimFirstResult" element="bps:initiateAndClaimFirstResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInputMessageForActivityInstanceResponseMsg">
+    <wsdl:part name="getInputMessageForActivityInstanceResult" element="bps:getInputMessageForActivityInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomPropertiesOfProcessInstanceRequestMsg">
+    <wsdl:part name="getCustomPropertiesOfProcessInstanceParameters" element="bps:getCustomPropertiesOfProcessInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceRetryRequestMsg">
+    <wsdl:part name="forceRetryParameters" element="bps:forceRetry">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProcessTemplateRequestMsg">
+    <wsdl:part name="getProcessTemplateParameters" element="bps:getProcessTemplate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProcessTemplateResponseMsg">
+    <wsdl:part name="getProcessTemplateResult" element="bps:getProcessTemplateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStoredQueryNamesResponseMsg">
+    <wsdl:part name="getStoredQueryNamesResult" element="bps:getStoredQueryNamesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findQueryTableMetaDataRequestMsg">
+    <wsdl:part name="findQueryTableMetaDataParameters" element="bps:findQueryTableMetaData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiveEventHandlersRequestMsg">
+    <wsdl:part name="getActiveEventHandlersParameters" element="bps:getActiveEventHandlers">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resumeRequestMsg">
+    <wsdl:part name="resumeParameters" element="bps:resume">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProcessInstanceRequestMsg">
+    <wsdl:part name="getProcessInstanceParameters" element="bps:getProcessInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInputMessageForProcessInstanceResponseMsg">
+    <wsdl:part name="getInputMessageForProcessInstanceResult" element="bps:getInputMessageForProcessInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWaitingActivitiesRequestMsg">
+    <wsdl:part name="getWaitingActivitiesParameters" element="bps:getWaitingActivities">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceRetryResponseMsg">
+    <wsdl:part name="forceRetryResult" element="bps:forceRetryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteStoredQueryRequestMsg">
+    <wsdl:part name="deleteStoredQueryParameters" element="bps:deleteStoredQuery">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="restartRequestMsg">
+    <wsdl:part name="restartParameters" element="bps:restart">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="executeStoredQueryRequestMsg">
+    <wsdl:part name="executeStoredQueryParameters" element="bps:executeStoredQuery">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryEntitiesRequestMsg">
+    <wsdl:part name="queryEntitiesParameters" element="bps:queryEntities">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="suspendResponseMsg">
+    <wsdl:part name="suspendResult" element="bps:suspendResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueryPropertiesResponseMsg">
+    <wsdl:part name="getQueryPropertiesResult" element="bps:getQueryPropertiesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryProcessTemplatesRequestMsg">
+    <wsdl:part name="queryProcessTemplatesParameters" element="bps:queryProcessTemplates">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWaitingActivitiesResponseMsg">
+    <wsdl:part name="getWaitingActivitiesResult" element="bps:getWaitingActivitiesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProcessInstanceResponseMsg">
+    <wsdl:part name="getProcessInstanceResult" element="bps:getProcessInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryProcessTemplatesResponseMsg">
+    <wsdl:part name="queryProcessTemplatesResult" element="bps:queryProcessTemplatesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setVariableForProcessInstanceRequestMsg">
+    <wsdl:part name="setVariableForProcessInstanceParameters" element="bps:setVariableForProcessInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteStoredQueryResponseMsg">
+    <wsdl:part name="deleteStoredQueryResult" element="bps:deleteStoredQueryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceTerminateRequestMsg">
+    <wsdl:part name="forceTerminateParameters" element="bps:forceTerminate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="businessFaultMsg">
+    <wsdl:part name="businessFault" element="bct:businessFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteRequestMsg">
+    <wsdl:part name="deleteParameters" element="bps:delete">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="suspendForRequestMsg">
+    <wsdl:part name="suspendForParameters" element="bps:suspendFor">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryRequestMsg">
+    <wsdl:part name="queryParameters" element="bps:query">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMessageTextOfExceptionRequestMsg">
+    <wsdl:part name="getMessageTextOfExceptionParameters" element="bps:getMessageTextOfException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getParticipatingTaskIDResponseMsg">
+    <wsdl:part name="getParticipatingTaskIDResult" element="bps:getParticipatingTaskIDResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomPropertiesOfActivityInstanceRequestMsg">
+    <wsdl:part name="getCustomPropertiesOfActivityInstanceParameters" element="bps:getCustomPropertiesOfActivityInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFaultMessageForProcessInstanceResponseMsg">
+    <wsdl:part name="getFaultMessageForProcessInstanceResult" element="bps:getFaultMessageForProcessInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceCompleteWithFaultRequestMsg">
+    <wsdl:part name="forceCompleteWithFaultParameters" element="bps:forceCompleteWithFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActivityInstanceResponseMsg">
+    <wsdl:part name="getActivityInstanceResult" element="bps:getActivityInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceCompleteRequestMsg">
+    <wsdl:part name="forceCompleteParameters" element="bps:forceComplete">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="suspendUntilResponseMsg">
+    <wsdl:part name="suspendUntilResult" element="bps:suspendUntilResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFaultsRequestMsg">
+    <wsdl:part name="getFaultsParameters" element="bps:getFaults">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="suspendUntilRequestMsg">
+    <wsdl:part name="suspendUntilParameters" element="bps:suspendUntil">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueryTableMetaDataResponseMsg">
+    <wsdl:part name="getQueryTableMetaDataResult" element="bps:getQueryTableMetaDataResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOutputMessageForProcessInstanceRequestMsg">
+    <wsdl:part name="getOutputMessageForProcessInstanceParameters" element="bps:getOutputMessageForProcessInstance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findQueryTableMetaDataResponseMsg">
+    <wsdl:part name="findQueryTableMetaDataResult" element="bps:findQueryTableMetaDataResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStartActivitiesResponseMsg">
+    <wsdl:part name="getStartActivitiesResult" element="bps:getStartActivitiesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="callRequestMsg">
+    <wsdl:part name="callParameters" element="bps:call">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryResponseMsg">
+    <wsdl:part name="queryResult" element="bps:queryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resumeResponseMsg">
+    <wsdl:part name="resumeResult" element="bps:resumeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="completeAndClaimSuccessorResponseMsg">
+    <wsdl:part name="completeAndClaimSuccessorResult" element="bps:completeAndClaimSuccessorResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="callAsyncRequestMsg">
+    <wsdl:part name="callAsyncParameters" element="bps:callAsync">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomPropertiesOfProcessTemplateRequestMsg">
+    <wsdl:part name="getCustomPropertiesOfProcessTemplateParameters" element="bps:getCustomPropertiesOfProcessTemplate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BFMJAXWSPortType">
+    <wsdl:operation name="queryProcessTemplates">
+<wsdl:documentation><![CDATA[
+        Retrieves process templates persistently stored in the database.
+        <p/>
+        You can specify a threshold or a filter to reduce the number of process templates returned.
+        If the number is not restricted, all process templates you are authorized to see are returned.
+        Process templates are only returned if the enterprise application they belong to
+        is not stopped.
+        <p/>
+        Process templates are sorted on the server according to the specified sort criteria.
+        Sorting on the server means that the locale of the server is used.
+        <p/>
+        The parameters of the query, the where- and order-by-clause, are
+        specified using SQL based on the PROCESS_TEMPLATE view.
+        Execution of the query can thus be shifted to SQL and becomes portable and optimizable.
+        <p/>
+        Note, however, when you use a combination of the order-by-clause and threshold
+        parameters, the tuples returned depend on your database system.
+        For example, some database systems order all records and then return the requested number of tuples.
+        Other database systems first take the requested number of tuples and then apply the order criteria.
+
+        @param whereClause The search condition to be applied to the set of available templates.
+        @param orderByClause Sorts the qualifying process templates by the values of the columns specified.
+        @param threshold Specifies the maximum number of process templates to be returned from the server to the client.
+        @param timeZone The time zone of the timestamp constants in the whereClause.
+      
+        @return An array of qualifying process templates.
+        
+        @exception bpcFault Stack trace if an internal exception occurs.      
+        
+      ]]></wsdl:documentation>
+      <wsdl:input name="queryProcessTemplatesRequest" message="bps:queryProcessTemplatesRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="queryProcessTemplatesResponse" message="bps:queryProcessTemplatesResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="queryProcessTemplatesFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="query">
+<wsdl:documentation><![CDATA[
+        Retrieves selected object properties persistently stored in the database
+        and allows for retrieving a specified set of data only.
+        <p/>
+        You can specify a filter, a starting tuple, or a threshold to restrict the number of tuples
+        returned. The tuples are sorted on the server according to the specified sort criteria.
+        Sorting on the server means that the locale of the server is used.
+        <p/>
+        Specify the parameters of the query, the select-, where-, and order-by-clause,
+        using SQL based on the published process views.
+        Execution of the query can thus be shifted to SQL and becomes portable and optimizable.
+        <p/>
+        Note, however, when you use a combination of the order-by-clause, threshold, or skipTupels
+        parameters, the tuples returned depend on your database system.
+        For example, some database systems order all records and then return the requested number of tuples.
+        Other database systems first take the requested number of tuples and then apply the order criteria.
+        <p/>
+        The domain of the query, that is, the SQL from-clause, is determined automatically.
+        In principle, all properties of objects are selectable for which you own a work item
+        or which can be transitively reached via your work item.
+        As a rule of thumb, all objects except process templates can be reached via work items.
+        This means that you cannot use process template properties only but that you
+        must specify a non process template property in the select- or where-clause.
+        <p/>
+        Note that a business process administrator has special rights and can retrieve
+        information on objects associated to other users.
+        query() thus returns the selected properties of all objects for which there are
+        work items to the business process administrator, no matter whether there is a personally
+        owned work item or another user's work item.
+        If the business process administrator wants to view everything that is stored
+        on the database, independently from the existence of a work item, he/she can use queryAll().
+
+        @param selectClause Describes the query result, that is, declares a list of names that identify the object properties (columns of the result) to be returned.
+        @param whereClause The search condition to be applied to the query domain.
+        @param orderByClause Sorts the query result set by the values of the columns you identify.
+        @param skipTuples The number of query result set tuples to be ignored and not to be returned to the caller.
+        @param threshold The maximum number of query result set tuples to be returned from the server to the client.
+        @param timeZone The time zone of the timestamp constants in the whereClause.
+
+        @return An object containing the query result.
+
+        @exception bpcFault Stack trace if an internal exception occurs.        
+
+      ]]></wsdl:documentation>
+      <wsdl:input name="queryRequest" message="bps:queryRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="queryResponse" message="bps:queryResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="queryFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="queryAll">
+<wsdl:documentation><![CDATA[
+        Retrieves selected object properties of all objects persistently stored in the database
+        and allows for retrieving a specified set of data only.
+        <p/>
+        You can specify a filter, a starting tuple, or a threshold to restrict the number of tuples
+        returned. The tuples are sorted on the server according to the specified sort criteria.
+        Sorting on the server means that the locale of the server is used.
+        <p/>
+        Specify the parameters of the query, the select-, where-, and order-by-clause,
+        using SQL based on the published process views.
+        Execution of the query can thus be shifted to SQL and becomes portable and optimizable.
+        <p/>
+        Note, however, when you use a combination of the order-by-clause, threshold, or skipTupels
+        parameters, the tuples returned depend on your database system.
+        For example, some database systems order all records and then return the requested number of tuples.
+        Other database systems first take the requested number of tuples and then apply the order criteria.
+        <p/>
+        The domain of the query, that is, the SQL from-clause, is determined automatically.
+        <p/>
+        The caller must be a business process administrator or business process monitor.
+        
+        @param selectClause Describes the query result, that is, declares a list of names that identify the object properties (columns of the result) to be returned.
+        @param whereClause The search condition to be applied to the query domain.
+        @param orderByClause Sorts the query result set by the values of the columns you identify.
+        @param skipTuples The number of query result set tuples to be ignored and not to be returned to the caller.
+        @param threshold The maximum number of query result set tuples to be returned from the
+ server to the client.
+        @param timeZone The time zone of the timestamp constants in the whereClause.
+
+        @return An object containing the query result.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="queryAllRequest" message="bps:queryAllRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="queryAllResponse" message="bps:queryAllResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="queryAllFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActivityInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the specified activity instance using the activity instance ID.
+        <p/>
+        The activity instance and the associated process instance can be in any execution state.
+        The caller must have at least reader authority for the activity instance or for the
+        associated process instance. 
+        
+        @param aiid The object ID of the activity instance to be retrieved.
+
+        @return The activity instance.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                         
+      ]]></wsdl:documentation>
+      <wsdl:input name="getActivityInstanceRequest" message="bps:getActivityInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getActivityInstanceResponse" message="bps:getActivityInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getActivityInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getParticipatingTaskID">
+<wsdl:documentation><![CDATA[
+        Retrieves the object ID of the task instance associated to the
+        specified human task activity using the activity instance ID.
+        A human task activity is also known as staff activity.
+        <p/>
+        The human task activity instance can be in any state.
+        The caller must have at least reader authority for the activity instance.
+
+        @param aiid The object ID of the activity instance.
+
+        @return The object ID of the associated to-do task instance.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+
+      ]]></wsdl:documentation>
+      <wsdl:input name="getParticipatingTaskIDRequest" message="bps:getParticipatingTaskIDRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getParticipatingTaskIDResponse" message="bps:getParticipatingTaskIDResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getParticipatingTaskIDFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getProcessTemplate">
+<wsdl:documentation><![CDATA[
+        Retrieves the specified process template using a string representation of the process template ID
+        or the process template name. When a process template name is provided and there exists more than one
+        template with this name, then the currently valid template is returned.
+        <p/>
+        The caller must be authorized for the process template.   
+        
+        @param identifier The string representation of the process template object ID or the process template name.
+
+        @return The process template.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                      
+      ]]></wsdl:documentation>
+      <wsdl:input name="getProcessTemplateRequest" message="bps:getProcessTemplateRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getProcessTemplateResponse" message="bps:getProcessTemplateResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getProcessTemplateFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getQueryProperties">
+<wsdl:documentation><![CDATA[
+        Retrieves the query properties of the specified process template using
+        the process template ID.
+        <p/>
+        Query properties in the BPEL process definition are used to declare
+        which parts of a variable should be accessible with the query() API function.
+        <p/>
+        The caller must be authorized for the process template.
+        
+        @param ptid The object ID of the process template for which the query properties are to be retrieved.
+
+        @return A list of query properties.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getQueryPropertiesRequest" message="bps:getQueryPropertiesRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getQueryPropertiesResponse" message="bps:getQueryPropertiesResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getQueryPropertiesFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getProcessInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the specified process instance using the process instance ID.
+        <p/>
+        The process instance can be in any execution state.
+        The caller must have at least reader authority for the process instance
+        or be the starter of the process instance.
+        
+        @param piid The object ID of the process instance to be retrieved.
+
+        @return The process instance.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getProcessInstanceRequest" message="bps:getProcessInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getProcessInstanceResponse" message="bps:getProcessInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getProcessInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInputMessageForProcessInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the input message of the specified process instance using the process instance ID.
+        <p/>
+        The input message can be retrieved in any execution state of the process instance.
+        The caller must have at least reader authority for the process instance
+        or be the starter of the process instance.
+        
+        @param piid The object ID of the process instance whose input message is to be retrieved.
+
+        @return The input message.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getInputMessageForProcessInstanceRequest" message="bps:getInputMessageForProcessInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getInputMessageForProcessInstanceResponse" message="bps:getInputMessageForProcessInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getInputMessageForProcessInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInputMessageForActivityInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the input message of the specified activity instance using the activity instance ID.
+        <p/>
+        The input message can be retrieved in any execution state of the associated process instance.
+        The input message can be retrieved in the claimed, expired, failed,
+        finished, terminated, ready, or stopped execution state of the activity instance.
+        The activity can be an invoke or human task activity.
+        A human task activity is also known as staff activity.
+        <p/>
+        The caller must have at least reader authority for the activity instance or for the
+        associated process instance.
+        
+        @param aiid The object ID of the activity instance whose input message is to be retrieved.
+
+        @return The input message.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+        <p/>
+      ]]></wsdl:documentation>
+      <wsdl:input name="getInputMessageForActivityInstanceRequest" message="bps:getInputMessageForActivityInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getInputMessageForActivityInstanceResponse" message="bps:getInputMessageForActivityInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getInputMessageForActivityInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getOutputMessageForProcessInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the output message of the specified process instance using the process instance ID.
+        <p/>
+        The output message can be retrieved in any execution state of the process instance.
+        The caller must have at least reader authority for the process instance
+        or be the starter of the process instance.
+        
+        @param piid The object ID of the process instance whose output message is to be retrieved.
+
+        @return The output message.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getOutputMessageForProcessInstanceRequest" message="bps:getOutputMessageForProcessInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getOutputMessageForProcessInstanceResponse" message="bps:getOutputMessageForProcessInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getOutputMessageForProcessInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getOutputMessageForActivityInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the output message of the specified activity instance using the activity instance ID.
+        <p/>
+        An output message can be retrieved in any execution state of the associated process instance.
+        The output message can be retrieved in the claimed, expired, failed,
+        finished, terminated, ready, or stopped execution state of the activity instance.
+        The activity can be a request-response invoke or a human task activity.
+        A human task activity is also known as staff activity.
+        Note that that any saved output message of an expired (non-completed) human task activity has been deleted.
+        <p/>
+        The caller must have at least reader authority for the activity instance or for the
+        associated process instance.
+        
+        @param aiid The object ID of the activity instance whose output message is to be retrieved.
+
+        @return The output message.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getOutputMessageForActivityInstanceRequest" message="bps:getOutputMessageForActivityInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getOutputMessageForActivityInstanceResponse" message="bps:getOutputMessageForActivityInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getOutputMessageForActivityInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFaults">
+<wsdl:documentation><![CDATA[
+        Retrieves the fault names defined for the specified activity instance
+        using a string representation of the activity instance ID.
+        <p/>
+        Fault names can be retrieved in any execution state of the associated process instance.
+        The activity instance must be in the claimed, expired, failed,
+        finished, terminated, ready, or stopped execution state.
+        The activity can be a human task or invoke activity.
+        A human task activity is also known as staff activity.
+        <p/>
+        The caller must have at least reader authority for the activity instance or the associated process instance.
+        
+        @param aiid A string representation of the activity instance object ID that is used to identify the activity instance for which fault names are to be retrieved.
+
+        @return A list of fault names.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getFaultsRequest" message="bps:getFaultsRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getFaultsResponse" message="bps:getFaultsResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getFaultsFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFaultMessageForProcessInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the fault message of the specified process instance using the process instance ID.
+        <p/>
+        The fault message can be retrieved in any execution state of the process instance.
+        The caller must have at least reader authority for the process instance
+        or be the starter of the process instance.
+        
+        @param piid The object ID of the process instance for which the fault message is to be retrieved.
+
+        @return The fault message.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getFaultMessageForProcessInstanceRequest" message="bps:getFaultMessageForProcessInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getFaultMessageForProcessInstanceResponse" message="bps:getFaultMessageForProcessInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getFaultMessageForProcessInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFaultMessageForActivityInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the fault message of the specified activity instance using the activity instance ID.
+        <p/>
+        The fault message can be retrieved in any execution state of the associated process instance.
+        The activity instance must be in the claimed, expired, failed,
+        finished, terminated, ready, or stopped execution state.
+        The activity can be an invoke, script, or human task activity.
+        A human task activity is also known as staff activity.
+        Note that that any saved fault message of an expired (non-completed) human task activity has been deleted.
+        <p/>
+        The caller must have at least reader authority for the activity instance or for the
+        associated process instance.
+        
+        @param aiid The object ID of the activity instance for which the fault message is to be retrieved.
+
+        @return The fault message.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getFaultMessageForActivityInstanceRequest" message="bps:getFaultMessageForActivityInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getFaultMessageForActivityInstanceResponse" message="bps:getFaultMessageForActivityInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getFaultMessageForActivityInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getVariableOfProcessInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the specified variable of the specified process instance using the process instance ID.
+        <p/>
+        Variables allow to store business data for the process, across activity invocations.
+        They can be retrieved in any execution state of the process instance.
+        The caller must have at least reader authority for the process instance
+        or be the starter of the process instance.
+        
+        @param piid The object ID of the process instance for which the specified variable is to be retrieved.
+        @param variableName The name of the variable to be retrieved.
+
+        @return The variable.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getVariableOfProcessInstanceRequest" message="bps:getVariableOfProcessInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getVariableOfProcessInstanceResponse" message="bps:getVariableOfProcessInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getVariableOfProcessInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getVariableOfActivityInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the specified variable of the scope visible in the specified activity instance using the activity instance ID.
+        <p/>
+        Variables allow to store business data for the process instance, across activity invocations or for the activity.
+        The caller must have at least reader authority for the activity instance.
+        
+        @param aiid The object ID of the activity instance for which the specified variable is to be retrieved.
+        @param variableName The name of the variable to be retrieved.
+
+        @return The variable.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getVariableOfActivityInstanceRequest" message="bps:getVariableOfActivityInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getVariableOfActivityInstanceResponse" message="bps:getVariableOfActivityInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getVariableOfActivityInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setVariableForProcessInstance">
+<wsdl:documentation><![CDATA[
+        Sets the specified variable using the variable name and
+        the associated process instance ID.
+        <p/>
+        Variables allow to store business data for the process, across activity invocations.
+        This function supports process repair scenarios.
+        <p/>
+        The process instance must be in the running, failing, or terminating execution state.
+        The caller must be an administrator of the process instance.
+        
+        @param piid The process instance object ID.
+        @param variableName The name of the variable to be set.
+        @param message The message.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="setVariableForProcessInstanceRequest" message="bps:setVariableForProcessInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="setVariableForProcessInstanceResponse" message="bps:setVariableForProcessInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="setVariableForProcessInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setVariableForActivityInstance">
+<wsdl:documentation><![CDATA[
+        Sets the specified variable in the scope
+        visible for this activity
+        using the variable name and the associated activity instance ID.
+        <p/>
+        The activity instance must be in the compensating, running, or failing execution state.
+        The caller must be an administrator of the process instance.
+        
+        @param aiid The activity instance object ID.
+        @param variableName The name of the variable to be set.
+        @param message The message.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="setVariableForActivityInstanceRequest" message="bps:setVariableForActivityInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="setVariableForActivityInstanceResponse" message="bps:setVariableForActivityInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="setVariableForActivityInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMessageTextOfException">
+<wsdl:documentation><![CDATA[
+        Retrieves the message text associated to the specified message key and locale.
+        
+        @param locale The locale to specify the language in which the message text is to be retrieved.
+        @param messageKey The message key of the exception.
+        @param variableValues The values of variables to be pasted into the message text, if any.
+
+        @return The message text.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getMessageTextOfExceptionRequest" message="bps:getMessageTextOfExceptionRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getMessageTextOfExceptionResponse" message="bps:getMessageTextOfExceptionResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getMessageTextOfExceptionFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomPropertiesOfProcessTemplate">
+<wsdl:documentation><![CDATA[
+        Retrieves the custom properties of the specified process template using the process template ID.
+        <p/>
+        Custom properties allow a user to add additional properties to a process,
+        beyond those provided and managed by the process engine.
+        Custom properties are an extension to the BPEL notion of properties.
+        While the value of BPEL properties can only be derived from messages, the value of custom
+        properties can also be set in the process model during deployment or at runtime for
+        process instances and activities.
+        <p/>
+        The caller must be authorized for the process template.
+        
+        @param ptid The process template object ID whose custom properties are to be retrieved.
+
+        @return A list of CustomProperty objects.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getCustomPropertiesOfProcessTemplateRequest" message="bps:getCustomPropertiesOfProcessTemplateRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getCustomPropertiesOfProcessTemplateResponse" message="bps:getCustomPropertiesOfProcessTemplateResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getCustomPropertiesOfProcessTemplateFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomPropertiesOfProcessInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the custom properties of the specified process instance using the process instance ID.
+        <p/>
+        Custom properties allow a user to add additional properties to a process,
+        beyond those provided and managed by the process engine.
+        Custom properties are an extension to the BPEL notion of properties.
+        While the value of BPEL properties can only be derived from messages, the value of custom
+        properties can also be set in the process model during deployment or at runtime for
+        process instances and activities.
+        <p/>
+        Custom properties can be retrieved in any execution state of the process instance.
+        The caller must have at least reader authority for the process instance
+        or be the process starter.
+        
+        @param piid The process instance object ID whose custom properties are to be retrieved.
+
+        @return A list of CustomProperty objects.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getCustomPropertiesOfProcessInstanceRequest" message="bps:getCustomPropertiesOfProcessInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getCustomPropertiesOfProcessInstanceResponse" message="bps:getCustomPropertiesOfProcessInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getCustomPropertiesOfProcessInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomPropertiesOfActivityInstance">
+<wsdl:documentation><![CDATA[
+        Retrieves the custom properties of the specified activity instance using the activity instance ID.
+        <p/>
+        Custom properties allow a user to add additional properties to an activity,
+        beyond those provided and managed by the process engine.
+        Custom properties are an extension to the BPEL notion of properties.
+        While the value of BPEL properties can only be derived from messages, the value of custom
+        properties can also be set in the process model during deployment or at runtime for
+        process instances and activities.
+        <p/>
+        Custom properties can be retrieved in any execution state of the activity and
+        associated process instance.
+        The caller must have at least reader authority for the activity instance or for the
+        associated process instance.
+        
+        @param aiid The activity instance object ID whose custom properties are to be retrieved.
+
+        @return A list of CustomProperty objects.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getCustomPropertiesOfActivityInstanceRequest" message="bps:getCustomPropertiesOfActivityInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getCustomPropertiesOfActivityInstanceResponse" message="bps:getCustomPropertiesOfActivityInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getCustomPropertiesOfActivityInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setCustomPropertyForProcessInstance">
+<wsdl:documentation><![CDATA[
+        Stores custom specific values for the specified process instance using the process instance ID.
+        <p/>
+        Custom properties allow a user to add additional properties to processes and activities,
+        beyond those provided and managed by the process engine.
+        Custom properties are an extension to the BPEL notion of properties.
+        While the value of BPEL properties can only be derived from messages, the value of custom
+        properties can also be set in the process model during deployment or at runtime for
+        process instances and activities.
+        <p/>
+        A custom property has a name and a value of type string.
+        <p/>
+        The process instance can be in any execution state.
+        The caller must be the starter or an administrator of the process instance.
+        
+        @param piid The object ID of the process instance for which the custom property is set.
+        @param propertyName The name of the custom property to be set.
+        @param propertyValue The custom value to be set.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="setCustomPropertyForProcessInstanceRequest" message="bps:setCustomPropertyForProcessInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="setCustomPropertyForProcessInstanceResponse" message="bps:setCustomPropertyForProcessInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="setCustomPropertyForProcessInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setCustomPropertyForActivityInstance">
+<wsdl:documentation><![CDATA[
+        Stores custom-specific values for the specified activity instance using the activity instance ID.
+        <p/>
+        Custom properties allow a user to add additional properties to activities,
+        beyond those provided and managed by the process engine.
+        Custom properties are an extension to the BPEL notion of properties.
+        While the value of BPEL properties can only be derived from messages, the value of custom
+        properties can also be set in the process model during deployment or at runtime for
+        process instances and activities.
+        <p/>
+        A custom property has a name and a value of type string.
+        <p/>
+        The activity instance and the associated process instance can be in any execution state.
+        The caller must have editor authority for the activity instance, be the owner of the
+        activity instance, or be the administrator of the associated process instance.
+        
+        @param aiid A string representation of the activity instance object ID that is used to identify the activity instance.
+        @param propertyName The name of the custom property to be set.
+        @param propertyValue The custom value to be set.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="setCustomPropertyForActivityInstanceRequest" message="bps:setCustomPropertyForActivityInstanceRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="setCustomPropertyForActivityInstanceResponse" message="bps:setCustomPropertyForActivityInstanceResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="setCustomPropertyForActivityInstanceFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setCustomPropertyUsingActivityName">
+<wsdl:documentation><![CDATA[
+        Stores custom-specific values for the specified activity instance
+        using the process instance ID and the activity name.
+        <p/>
+        Custom properties allow a user to add additional properties to processes and activities,
+        beyond those provided and managed by the process engine.
+        Custom properties are an extension to the BPEL notion of properties.
+        While the value of BPEL properties can only be derived from messages, the value of custom
+        properties can also be set in the process model during deployment or at runtime for
+        process instances and activities.
+        <p/>
+        A custom property has a name and a value of type string.
+        <p/>
+        Custom properties can be provided in any execution state of the activity instance
+        and the associated process instance.
+        The caller must have editor authority for the activity instance, be the owner of the
+        activity instance, or be the administrator of the associated process instance.
+        
+        @param piid The process instance object ID that is used to identify the process instance.
+        @param activityName The name of the activity instance that is used to identify the activity instance.
+        @param propertyName The name of the custom property to be set.
+        @param propertyValue The custom value to be set.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="setCustomPropertyUsingActivityNameRequest" message="bps:setCustomPropertyUsingActivityNameRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="setCustomPropertyUsingActivityNameResponse" message="bps:setCustomPropertyUsingActivityNameResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="setCustomPropertyUsingActivityNameFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="completeAndClaimSuccessor">
+<wsdl:documentation><![CDATA[
+        Completes a claimed activity instance using a string representation of the activity instance ID
+        and claims a successor activity. In other words,
+        this method supports "single person workflow" scenarios.
+        <p/>
+        A successor activity is only claimed when it becomes available within the same
+        transaction as the completed activity.
+        This means that the transactional boundaries must have been set so that
+        the activity to be claimed participates in the same transaction as the completed activity.
+        <p/>
+        The activity instance that is completed must be in the claimed execution state and the associated
+        process instance must be in the running, failing, or terminating execution state.
+        The caller must be the owner of the activity instance or an administrator
+        of the associated process instance.
+        <p/>
+        Completion of an activity instance means that user processing finished and that
+        navigation of the process instance can continue. An output message
+        is passed to denote the successful execution of user processing. The activity instance
+        is put into the finished execution state.
+        <p/>
+        Output message values are then used to continue navigation.
+        <p/>
+        A successor human task activity instance is claimed
+        when the associated process instance is in the running execution state.
+        The caller must be a potential owner of the successor activity instance or an administrator
+        of the associated process instance.
+        The execution state of the activity instance is changed to claimed.
+        <p/>
+        Note that an activity instance may have been claimed because the associated task instance
+        is requested to be claimed automatically.
+        <p/>
+        When there are several activities that can be claimed, that is, there
+        is more than one path that can be followed after the completed activity, then
+        an arbitrary path is followed so that an arbitrary activity is claimed.
+        When multiple activities are claimed automatically, an arbitrary claimed activity is
+        returned.
+        
+        @param aiid A string representation of the activity instance object ID that is used to identify the activity instance to be completed.
+        @param output The output message that denotes the result of processing.
+
+        @return Descriptive Information of the claimed activity instance and its input message.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="completeAndClaimSuccessorRequest" message="bps:completeAndClaimSuccessorRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="completeAndClaimSuccessorResponse" message="bps:completeAndClaimSuccessorResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="completeAndClaimSuccessorFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="call">
+<wsdl:documentation><![CDATA[
+        Creates and executes a process instance that is derived from the specified
+        process template by calling the specified starting service.
+        An input message can be passed to specify initial values for the process instance.
+        <p/>
+        This method returns only when the execution of the process instance finishes with
+        the result of execution. If a fault occurs, an exception is thrown.
+        <p/>
+        The process template must specify that derived process instances can run synchronously,
+        that is, as a microflow and must return a reply.
+        The process must start with a single receive or pick activity.
+        <p/>
+        A process instance is only created when the currently valid version of the specified process template
+        is started and when it belongs to a started application.
+        
+        @param processTemplateName The name of the process template for which an instance is to be created and executed.
+        @param nameSpace The namespace of the service to be called.
+        @param portType The name of the port type.
+        @param operation The operation name of the service.
+        @param inputMessage The input message that specifies the initial values of the process instance.
+
+        @return The output message that denotes the result of execution.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="callRequest" message="bps:callRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="callResponse" message="bps:callResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="callBusinessFault" message="bps:businessFaultMsg">
+    </wsdl:fault>
+      <wsdl:fault name="callFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceTerminate">
+<wsdl:documentation><![CDATA[
+        Terminates the specified top-level process instance, its non-autonomous subprocesses,
+        its running, claimed, or waiting activities
+        using the process instance ID.
+        For example, you can use
+        these capabilities to remove failed process instances that are still in a
+        running state. This example might result from an invoked application that
+        failed and that did not return to a dormant state.
+        <p/>
+        Use the process termination capabilities as a last resort only.
+        The process instance is immediately terminated without waiting for outstanding activities to complete.
+        Process instances that are terminated are not compensated.
+        <p/>
+        Depending on the invokeCompensation flag, the process instance is compensated or not.
+        If compensation is to be ignored, the process instance is immediately terminated.
+        If compensation is to be invoked, the process instance is
+        compensated before it is terminated provided that compensation is defined at all. Otherwise,
+        the process instance is terminated without compensation.
+        <p/>
+        The process instance must be in the running, suspended, or failing execution state.
+        Only an administrator of the process instance can terminate the process instance.
+        <p/>
+        The process instance is put into the terminated execution state.
+        <p/>
+        If the "auto delete" option is not set or set to 'true',
+        the process instance is automatically deleted.
+        
+        @param piid The object ID of the process instance to be terminated.
+        @param invokeCompensation An indicator whether compensation is to be executed or not.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="forceTerminateRequest" message="bps:forceTerminateRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="forceTerminateResponse" message="bps:forceTerminateResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="forceTerminateFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+<wsdl:documentation><![CDATA[
+        Deletes the specified top-level process instance and its non-autonomous subprocesses
+        using a string representation of the process instance ID.
+        <p/>
+        The process instance must be in the finished, terminated, compensated, or failed execution state.
+        The caller must be an administrator of the process instance.
+        
+        @param piid A string representation of the process instance object ID that is used to identify the process instance to be deleted.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="deleteRequest" message="bps:deleteRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="deleteResponse" message="bps:deleteResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="deleteFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="restart">
+<wsdl:documentation><![CDATA[
+        Restarts the specified top-level process instance and its non-autonomous subprocesses
+        using the process instance ID.
+        <p/>
+        The process instance must be in the finished, terminated, compensated, or failed execution state.
+        A process instance may only be restarted, if the corresponding schema version of
+        the process template is at least 6.0.
+        The caller must be an administrator of the process instance.
+        
+        @param piid The object ID of the process instance to be restarted.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="restartRequest" message="bps:restartRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="restartResponse" message="bps:restartResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="restartFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="resume">
+<wsdl:documentation><![CDATA[
+        Resumes the specified top-level process instance and its non-autonomous
+        subprocesses using the process instance ID.
+        <p/>
+        The process instance must be in the suspended execution state.
+        The caller must be an administrator of the process instance.
+        
+        @param piid The object ID of the process instance to be resumed.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="resumeRequest" message="bps:resumeRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="resumeResponse" message="bps:resumeResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="resumeFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="suspend">
+<wsdl:documentation><![CDATA[
+        Suspends the specified top-level process instance and its non-autonomous subprocesses
+        using a string representation of the process instance ID.
+        <p/>
+        The process instance must be in the running or failing execution state.
+        The caller must be an administrator of the process instance.
+        
+        @param piid A string representation of the process instance object ID that is used to identify the process instance to be suspended.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="suspendRequest" message="bps:suspendRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="suspendResponse" message="bps:suspendResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="suspendFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="suspendFor">
+<wsdl:documentation><![CDATA[
+        Suspends the specified top-level process instance and its non-autonomous subprocesses
+        for the specified duration using the process instance ID.
+        <p/>
+        The process instance must be in the running or failing execution state.
+        Subprocesses are suspended if they are in state running, failing or terminating.
+        The caller must be an administrator of the process instance.
+        
+        @param piid The object ID of the process instance to be suspended.
+        @param duration The seconds for which the process instance is to be suspended.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="suspendForRequest" message="bps:suspendForRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="suspendForResponse" message="bps:suspendForResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="suspendForFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="suspendUntil">
+<wsdl:documentation><![CDATA[
+        Suspends the specified top-level process instance and its non-autonomous subprocesses
+        until the specified point in time is reached using the process instance ID.
+        <p/>
+        The process instance must be in the running or failing execution state.
+        Subprocesses are suspended if they are in state running, failing or terminating.
+        The caller must be an administrator of the process instance.
+        
+        @param piid The object ID of the process instance to be suspended.
+        @param deadline The time up to which the process instance is to be suspended.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="suspendUntilRequest" message="bps:suspendUntilRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="suspendUntilResponse" message="bps:suspendUntilResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="suspendUntilFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createStoredQuery">
+<wsdl:documentation><![CDATA[
+        Creates a query definition and specifies properties to be stored together with the query.
+        If this method is called by a business process administrator, then a stored query is created
+        that is available for public usage.
+        If this method is called by a regular user, then a stored query is created
+        that is privately available for the calling logged-on user.
+        <p/>
+        A stored query represents a set of selected object properties. The number of tuples in the set
+        can be restricted by a filter or threshold. When executing the stored query, that set
+        can additionally be restricted by specifying a starting tuple parameter.
+        <p/>
+        To allow for the re-use of stored queries, parameters can be specified in the where-clause
+        so that, for example, the owner of activities can be specified when the stored query is executed.
+        <p/>
+        Besides defining filtering criteria, sort criteria can be defined that are applied on the server.
+        Sorting on the server means that the locale of the server is used.
+        <p/>
+        Specify the parameters of the query definition, the select-, where-, and order-by-clause,
+        using SQL based on the published views.
+        Execution of the query can thus be shifted to SQL and becomes portable and optimizable.
+        <p/>
+        Note, however, when you use a combination of the order-by-clause, threshold, or skipTupels
+        parameters, the tuples returned depend on your database system.
+        For example, some database systems order all records and then return the requested number of tuples.
+        Other database systems first take the requested number of tuples and then apply the order criteria.
+        <p/>
+        The domain of the query, that is, the SQL from-clause, is determined automatically.
+        All properties of objects are returned for which you own a work item,
+        or which can be transitively reached via your work item.
+        As a rule of thumb, all objects except process templates can be reached via work items.
+        This means that you cannot use process template properties only but that you
+        must specify a non process template property in the select- or where-clause.
+        <p/>
+        Note that a business process administrator has special rights and can retrieve
+        information on objects associated to other users. When the stored query is executed,
+        it returns the selected properties of all objects for which there are
+        work items to the business process administrator, no matter whether there is a personally
+        owned work item or another user's work item.
+        <p/>
+        Although stored query definitions are stored persistently, object properties contained in
+        the result set are assembled dynamically when they are queried.
+        <p/>
+        When a stored query definition needs to be updated, it must be deleted and recreated.
+        
+        @param storedQueryName The name of the stored query to be created; must not be greater than 64 bytes in UTF-8 format.
+        @param selectClause Describes the query result that is returned when the stored query is executed.
+        @param whereClause Specifies the search condition that is applied when the stored query is executed.
+        @param orderByClause Orders the result of the stored query execution by the values of the columns you identify.
+        @param threshold The maximum number of stored query execution result tuples to be returned from the server to the client.
+        @param timeZone Specifies the time zone of the timestamp constants in the whereClause.
+        @param storedQueryProperties Specifies user-defined properties to be attached to the stored query.
+        @param clientType A user-defined client type to specify the creator of the stored query, for example, Web, Portal, or Custom.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="createStoredQueryRequest" message="bps:createStoredQueryRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="createStoredQueryResponse" message="bps:createStoredQueryResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="createStoredQueryFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteStoredQuery">
+<wsdl:documentation><![CDATA[
+        Deletes the specified stored query.
+        If this method is called by a business process administrator, then a stored query is deleted
+        that is available for public usage.
+        If this method is called by a regular user, then a stored query is deleted
+        that is privately available for the calling logged-on user.
+        <p/>
+        No error is signalled when the specified stored query does no longer exist.
+        
+        @param storedQueryName The name of the stored query to be deleted.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="deleteStoredQueryRequest" message="bps:deleteStoredQueryRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="deleteStoredQueryResponse" message="bps:deleteStoredQueryResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="deleteStoredQueryFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStoredQuery">
+<wsdl:documentation><![CDATA[
+        Retrieves the specified stored query definition. If a private stored query
+        exists for the calling user, then the private stored query is returned; otherwise
+        the public stored query with the specified name.
+        
+        @param storedQueryName The name of the stored query to be retrieved.
+
+        @return The definition of the stored query retrieved.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getStoredQueryRequest" message="bps:getStoredQueryRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getStoredQueryResponse" message="bps:getStoredQueryResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getStoredQueryFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStoredQueryNames">
+<wsdl:documentation><![CDATA[
+        Retrieves the names of stored queries persistently stored in the database.
+        Both the names of public and private stored queries are returned.
+        
+        @return An array of stored query names.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getStoredQueryNamesRequest" message="bps:getStoredQueryNamesRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getStoredQueryNamesResponse" message="bps:getStoredQueryNamesResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getStoredQueryNamesFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="executeStoredQuery">
+<wsdl:documentation><![CDATA[
+        Performs the specified stored query and specifies values for parameters in the where-clause.
+        <p/>
+        If a private stored query with the specified name
+        exists for the calling user, then the private stored query is performed; otherwise
+        the public stored query with the specified name.
+        <p/>
+        Only properties of objects are returned for which the logged-on user has a work item.
+        Note that a business process administrator has special rights and can retrieve
+        all properties of objects for which there is a user's work item.
+        
+        @param storedQueryName The name of the stored query to be executed.
+        @param skipTuples The number of query result set tuples to be ignored and not to be returned to the caller.
+        @param threshold The maximum number of result set tuples to be returned from the server to the client.
+        @param parameters A list of string values to replace parameters in the where-clause.
+
+        @return The qualifying object properties.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="executeStoredQueryRequest" message="bps:executeStoredQueryRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="executeStoredQueryResponse" message="bps:executeStoredQueryResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="executeStoredQueryFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceRetry">
+<wsdl:documentation><![CDATA[
+        Forces the repetition of an activity instance
+        using a string representation of the activity instance ID.
+        <p/>
+        The activity instance must be in the stopped or running execution state and the associated
+        process instance must be in the running execution state.
+        <p/>
+        The caller must be an administrator of the associated process instance.
+        <p/>
+        If the activity has been stopped because of a timeout, then the expiration timer
+        is reset.
+        <p/>
+        Since no input message is passed, the process engine uses the input message
+        available to the system.
+        
+        @param aiid A string representation of the activity instance object ID that is used to identify the activity instance to be retried.
+        @param continueOnError A flag that indicates what should happen in case of an error, that is, when a system exception or an unhandled fault occurs.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="forceRetryRequest" message="bps:forceRetryRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="forceRetryResponse" message="bps:forceRetryResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="forceRetryFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceRetryWithInput">
+<wsdl:documentation><![CDATA[
+        Forces the repetition of an activity instance
+        using a string representation of the activity instance ID and an input message.
+        <p/>
+        The activity instance must be in the stopped or running execution state and the associated
+        process instance must be in the running execution state.
+        <p/>
+        The caller must be an administrator of the associated process instance.
+        <p/>
+        If the activity has been stopped because of a timeout, then the expiration timer
+        is reset.
+        <p/>
+        Optionally, an input message may be provided. The process engine uses the input message
+        provided.
+        
+        @param aiid A string representation of the activity instance object ID that is used to identify the activity instance to be retried.
+        @param inputMessage The input message that specifies the values to be used by the activity instance.
+        @param continueOnError A flag that indicates what should happen in case of an error, that is, when a system exception or an unhandled fault occurs.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="forceRetryWithInputRequest" message="bps:forceRetryWithInputRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="forceRetryWithInputResponse" message="bps:forceRetryWithInputResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="forceRetryWithInputFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceComplete">
+<wsdl:documentation><![CDATA[
+        Forces the completion of an activity instance
+        using a string representation of the activity instance ID.
+        <p/>
+        The activity instance must be in the stopped or running execution state.
+        The running execution state requires that the activity does not invoke a sub-process. The associated
+        process instance must be in the running execution state.
+        <p/>
+        The caller must be an administrator of the associated process instance.
+        <p/>
+        Forcing the completion of an activity instance states that navigation of the process
+        instance can continue.
+        <p/>
+        Depending on the stored result of user processing, output or fault message values are used to
+        continue navigation.
+        <p/>
+        If user processing did not complete successfully, that is, if a fault message has been
+        set, the activity instance is put into the failed execution state when the fault is handled
+        or when the continueOnError flag is set to true. It remains in the
+        stopped execution state when the fault is not handled and the continueOnError flag is set to false.
+        <p/>
+        Note that an output or fault message does not need to be set; navigation
+        can continue with an empty output message.
+        
+        @param aiid A string representation of the activity instance object ID that is used to identify the activity instance to be completed.
+
+        @param continueOnError A flag that indicates what should happen in case of an error, that is, when a system exception or an unhandled fault occurs.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="forceCompleteRequest" message="bps:forceCompleteRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="forceCompleteResponse" message="bps:forceCompleteResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="forceCompleteFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceCompleteWithOutput">
+<wsdl:documentation><![CDATA[
+        Forces the completion of an activity instance
+        using a string representation of the activity instance ID and an output message.
+        <p/>
+        The activity instance must be in the stopped or running execution state.
+        The running execution state requires that the activity does not invoke a sub-process. The associated
+        process instance must be in the running execution state.
+        <p/>
+        The caller must be an administrator of the associated process instance.
+        <p/>
+        Completion of an activity instance means that user processing finished and that
+        navigation of the process instance can continue. An output message
+        is passed to denote the successful execution of user processing. The activity instance
+        is put into the finished execution state.
+        <p/>
+        Output message values are used to continue navigation.
+        
+        @param aiid A string representation of the activity instance object ID that is used to identify the activity instance to be completed.
+        @param output The output message that denotes the successful result of processing.
+        @param continueOnError A flag that indicates what should happen in case of an error, that is, when a system exception or an unhandled fault occurs.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="forceCompleteWithOutputRequest" message="bps:forceCompleteWithOutputRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="forceCompleteWithOutputResponse" message="bps:forceCompleteWithOutputResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="forceCompleteWithOutputFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceCompleteWithFault">
+<wsdl:documentation><![CDATA[
+        Forces the completion of an activity instance
+        using a string representation of the activity instance ID
+        and states the actual result of user processing.
+        <p/>
+        The activity instance must be in the stopped or running execution state.
+        The running execution state requires that the activity does not invoke a sub-process. The associated
+        process instance must be in the running execution state.
+        <p/>
+        The caller must be an administrator of the associated process instance.
+        <p/>
+        Forcing the completion of an activity instance states that navigation of the process
+        instance can continue.
+        <p/>
+        An output message
+        is passed to denote the successful execution of user processing. The activity instance
+        is put into the finished execution state.
+        <p/>
+        If user processing did not complete successfully, that is, if a fault message is
+        passed, the activity instance is put into the failed execution state when the fault is handled
+        or when the continueOnError flag is set to true. It remains in the
+        stopped execution state when the fault is not handled and the continueOnError flag is set to false.
+        <p/>
+        Depending on the result of user processing, output or fault message values are used to
+        continue navigation.
+        
+        @param aiid The object ID to identify the activity instance to be completed.
+        @param message The fault message.
+        @param faultName The name of the fault.
+        @param continueOnError A flag that indicates what should happen in case of an error, that is, when a system exception or an unhandled fault occurs.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="forceCompleteWithFaultRequest" message="bps:forceCompleteWithFaultRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="forceCompleteWithFaultResponse" message="bps:forceCompleteWithFaultResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="forceCompleteWithFaultFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStartActivities">
+<wsdl:documentation><![CDATA[
+        Returns information about activities that can start a process instance from the
+        specified process template
+        using a string representation of the process template ID.
+        <p/>
+        The caller must be authorized for the process template.
+        
+        @param ptid The string representation of the process template object ID.
+
+        @return An array of activity service templates.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getStartActivitiesRequest" message="bps:getStartActivitiesRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getStartActivitiesResponse" message="bps:getStartActivitiesResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getStartActivitiesFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWaitingActivities">
+<wsdl:documentation><![CDATA[
+        Returns information about activities of a process instance,
+        that are in the waiting execution state.
+        The process instance is identified using the process instance ID.
+        
+        @param piid The object ID of the process instance.
+
+        @return An array of activity service templates.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getWaitingActivitiesRequest" message="bps:getWaitingActivitiesRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getWaitingActivitiesResponse" message="bps:getWaitingActivitiesResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getWaitingActivitiesFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendMessage">
+<wsdl:documentation><![CDATA[
+        Sends the specified message to the specified process template, using
+        the namespace, port type, and operation of the service to be called.
+        <p/>
+        The process template is identified by its name.
+        
+        @param processTemplateName The name or the object ID of a process template, a message is to be send to.
+        @param nameSpace The namespace of the service to be called.
+        @param portType The name of the port type.
+        @param operation The operation name of the service.
+        @param message The message.
+
+        @return The ID of the process instance created or identified.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="sendMessageRequest" message="bps:sendMessageRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="sendMessageResponse" message="bps:sendMessageResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="sendMessageFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveEventHandlers">
+<wsdl:documentation><![CDATA[
+        Retrieves the active event handlers of the specified
+        process instance using a string representation of the process instance object ID.
+        <p/>
+        The caller must have at least reader authority for the process instance
+        or be the process starter.
+        
+        @param piid A string representation of the object ID of the process instance.
+
+        @return An array of qualifying event handler templates.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="getActiveEventHandlersRequest" message="bps:getActiveEventHandlersRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getActiveEventHandlersResponse" message="bps:getActiveEventHandlersResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getActiveEventHandlersFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="callAsync">
+<wsdl:documentation><![CDATA[
+        Asynchronously creates and executes a process instance that is derived from
+        the specified process template.
+        An input message can be passed to specify initial values for the process instance.
+        <p/>
+        This method always returns an empty result. Callback operations are used to deliver
+        any output, faults, or exceptions. This means that
+        there must be a Web service that implements the callback operations.
+        An endpoint reference must be passed that points to this Web service.
+        <p/>
+        A process instance is only created when the currently valid version of the specified process template
+        is started and when it belongs to a started application. 
+        
+        @param processTemplateName The name of the process template for which an instance is to be created and executed.
+        @param portType The namespace and porttype name of the service to be called.
+        @param operation The operation name of the service.
+        @param input The message.
+        @param replyTo The endpoint of the Web service that implements the callback operations.
+
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="callAsyncRequest" message="bps:callAsyncRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="callAsyncResponse" message="bps:callAsyncResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="callAsyncFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findQueryTableMetaData">
+<wsdl:documentation><![CDATA[
+        Queries the meta data of query tables.
+        You can specify options to limit the number of query tables for which the meta data is returned.    
+        
+        @param metaDataOptions The options to be applied.
+        
+        @return A list of QueryTableMetaData objects.
+        
+        @exception bpcFault Stack trace if an internal exception occurs.
+                
+      ]]></wsdl:documentation>
+      <wsdl:input name="findQueryTableMetaDataRequest" message="bps:findQueryTableMetaDataRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="findQueryTableMetaDataResponse" message="bps:findQueryTableMetaDataResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="findQueryTableMetaDataFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getQueryTableMetaData">
+<wsdl:documentation><![CDATA[
+        Returns the meta data of the specified query table. 
+        
+        @param queryTableName The name of the query table.
+        @param locale The locale that is used to calculate the value of the $LOCALE variable.
+        
+        @return The meta data of the query table.
+        
+        @exception bpcFault Stack trace if an internal exception occurs.
+                        
+      ]]></wsdl:documentation>
+      <wsdl:input name="getQueryTableMetaDataRequest" message="bps:getQueryTableMetaDataRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="getQueryTableMetaDataResponse" message="bps:getQueryTableMetaDataResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="getQueryTableMetaDataFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="queryEntities">
+<wsdl:documentation><![CDATA[
+        Queries entities using the specified query table.
+        You can specify filter and authorization options to limit the number of entities returned and values for parameters 
+        used in query table filters and selection criteria. 
+        
+        @param queryTableName The name of the query table.
+        @param filterOptions The filter options to be applied in addition to any filters defined for the query table.
+        @param authorizationOptions The authorization options to be applied in addition to any authorization specifications defined for the query table.
+        @param parameters A list of Parameter objects to set values for parameters used in query table filters and selection criteria.
+        
+        @return The entity result set containing the qualifying entities. 
+        
+        @exception bpcFault Stack trace if an internal exception occurs.
+                        
+      ]]></wsdl:documentation>
+      <wsdl:input name="queryEntitiesRequest" message="bps:queryEntitiesRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="queryEntitiesResponse" message="bps:queryEntitiesResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="queryEntitiesFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="queryEntityCount">
+<wsdl:documentation><![CDATA[
+        Counts qualifying entities of a potential query for entities. 
+        
+        @param queryTableName The name of the query table.
+        @param filterOptions The filter options to be applied in addition to any filters defined for the query table.
+        @param authorizationOptions The authorization options to be applied in addition to any authorization specifications defined for the query table.
+        @param parameters A list of Parameter objects to set values for parameters used in query table filters and selection criteria.
+        
+        @return The number of qualifying entities.
+        
+        @exception bpcFault Stack trace if an internal exception occurs.
+                        
+      ]]></wsdl:documentation>
+      <wsdl:input name="queryEntityCountRequest" message="bps:queryEntityCountRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="queryEntityCountResponse" message="bps:queryEntityCountResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="queryEntityCountFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="initiateAndClaimFirst">
+<wsdl:documentation><![CDATA[
+        Creates a process instance from the specified process template
+        and claims the first inline human task for the logged-on user.
+        This method supports "single person workflow" scenarios.
+        <p/>
+        A human task activity is claimed when it becomes available within the same
+        transaction as the creation of the process instance.
+        This means that the transactional boundaries must have been set so that
+        the activity to be claimed participates in the same transaction as the creation of the
+        process instance.
+        <p/>
+        The caller must be a process administrator or a potential owner of the starting activity.
+        in order to create and start the process instance.
+        To claim the human task activity,
+        the caller must be a potential owner of the activity, an administrator
+        of the process instance, or an administrator of a scope that contains the activity.
+        If no activity is claimed, the result object only contains the object ID of the process instance.
+        <p/>
+        The caller of this method becomes the starter of the process instance
+        and receives a starter work item for the process instance.
+        Readers and process administrators are determined and receive work items for the process instance.
+        <p/>
+        The process instance is only created when the currently valid version of the specified process template
+        is started and when it belongs to a started application.
+        <p/>
+        The execution state of the claimed activity instance is set to claimed.
+        <p/>
+        When there are several activities that can be claimed, that is, there
+        is more than one path that can be followed after the creation of the process instance,
+        then an arbitrary activity is claimed.
+        When multiple activities are claimed automatically, an arbitrary claimed activity is
+        returned.
+        <p/>
+        Note that an activity instance may have been claimed because the associated task instance
+        is requested to be claimed automatically.
+        <p/>
+        This method is not supported in archive mode.
+        
+        @param processTemplateName The name of the process template from which an instance is to be created.
+        @param processInstanceName An optional name of the process instance to be created; must not be greater than 220 bytes in UTF-8 format.
+        @param inputMessage The input message that specifies the initial values of the process instance. 
+        
+        @return The object ID of the process instance created and information about the claimed activity instance, if any activity is claimed.
+        
+        @exception bpcFault Stack trace if an internal exception occurs.
+        
+      ]]></wsdl:documentation>
+      <wsdl:input name="initiateAndClaimFirstRequest" message="bps:initiateAndClaimFirstRequestMsg">
+    </wsdl:input>
+      <wsdl:output name="initiateAndClaimFirstResponse" message="bps:initiateAndClaimFirstResponseMsg">
+    </wsdl:output>
+      <wsdl:fault name="initiateAndClaimFirstFault" message="bps:processFaultMsg">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

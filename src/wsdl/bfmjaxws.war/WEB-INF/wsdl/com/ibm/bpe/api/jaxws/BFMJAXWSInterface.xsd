@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BEGIN COPYRIGHT
+  *************************************************************************
+  
+   Licensed Materials - Property of IBM
+   
+   Product 5724-L01 
+   (C) COPYRIGHT International Business Machines Corp., 2010
+   US Government Users Restricted Rights - Use, duplication or 
+   disclosure restricted by GSA ADP Schedule Contract 
+   with IBM Corp.
+  
+  ************************************************************************/
+  END COPYRIGHT
+-->
+<xsd:schema targetNamespace="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0" 
+            xmlns:bps="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0" 
+            xmlns:bpt="http://www.ibm.com/xmlns/prod/websphere/business-process/types/7.0" 
+            xmlns:bct="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:import namespace="http://www.ibm.com/xmlns/prod/websphere/business-process/types/7.0" schemaLocation="BFMDataTypes.xsd"/>
+  <xsd:import namespace="http://www.ibm.com/xmlns/prod/websphere/bpc-common/types/7.0" schemaLocation="BPCDataTypes.xsd"/>
+
+  <xsd:element name="queryProcessTemplates">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="whereClause" nillable="true" type="xsd:string"/>
+        <xsd:element name="orderByClause" nillable="true" type="xsd:string"/>
+        <xsd:element name="threshold" nillable="true" type="xsd:integer"/>
+        <xsd:element name="timeZone" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="queryProcessTemplatesResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="processTemplates" type="bpt:ProcessTemplatesType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="query">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="selectClause" type="xsd:string"/>
+        <xsd:element name="whereClause" nillable="true" type="xsd:string"/>
+        <xsd:element name="orderByClause" nillable="true" type="xsd:string"/>
+        <xsd:element name="skipTuples" nillable="true" type="xsd:integer"/>
+        <xsd:element name="threshold" nillable="true" type="xsd:integer"/>
+        <xsd:element name="timeZone" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="queryResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="queryResultSet" type="bct:QueryResultSetType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="queryAll">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="selectClause" type="xsd:string"/>
+        <xsd:element name="whereClause" nillable="true" type="xsd:string"/>
+        <xsd:element name="orderByClause" nillable="true" type="xsd:string"/>
+        <xsd:element name="skipTuples" nillable="true" type="xsd:integer"/>
+        <xsd:element name="threshold" nillable="true" type="xsd:integer"/>
+        <xsd:element name="timeZone" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="queryAllResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="queryResultSet" type="bct:QueryResultSetType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getActivityInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getActivityInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="activityInstance" nillable="true" type="bpt:ActivityInstanceType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getParticipatingTaskID">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getParticipatingTaskIDResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="tkiid" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getProcessTemplate">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="identifier" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getProcessTemplateResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="processTemplate" nillable="true" type="bpt:ProcessTemplateType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getQueryProperties">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ptid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getQueryPropertiesResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="queryProperties" type="bpt:QueryPropertiesType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getProcessInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getProcessInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="processInstance" nillable="true" type="bpt:ProcessInstanceType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getInputMessageForProcessInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getInputMessageForProcessInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="input" type="bct:UserDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getInputMessageForActivityInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getInputMessageForActivityInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="input" type="bct:UserDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getOutputMessageForProcessInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getOutputMessageForProcessInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="output" type="bct:UserDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getOutputMessageForActivityInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getOutputMessageForActivityInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="output" type="bct:UserDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getFaults">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getFaultsResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="faults" type="bct:FaultsType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getFaultMessageForProcessInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getFaultMessageForProcessInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="fault" type="bct:UserDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getFaultMessageForActivityInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getFaultMessageForActivityInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="fault" type="bct:UserDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getVariableOfProcessInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+        <xsd:element name="variableName" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getVariableOfProcessInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="variableData" type="bpt:VariableDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getVariableOfActivityInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+        <xsd:element name="variableName" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getVariableOfActivityInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="variableData" type="bpt:VariableDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="setVariableForProcessInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+        <xsd:element name="variableName" type="xsd:string"/>
+        <xsd:element name="variableData" type="bpt:VariableDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="setVariableForProcessInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="setVariableForActivityInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+        <xsd:element name="variableName" type="xsd:string"/>
+        <xsd:element name="variableData" type="bpt:VariableDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="setVariableForActivityInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getMessageTextOfException">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="locale" type="xsd:string"/>
+        <xsd:element name="messageKey" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="messageParameters" type="bct:MessageParametersType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getMessageTextOfExceptionResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="messageText" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getCustomPropertiesOfProcessTemplate">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ptid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getCustomPropertiesOfProcessTemplateResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="customProperties" type="bct:CustomPropertiesType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getCustomPropertiesOfProcessInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getCustomPropertiesOfProcessInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="customProperties" type="bct:CustomPropertiesType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getCustomPropertiesOfActivityInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getCustomPropertiesOfActivityInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="customProperties" type="bct:CustomPropertiesType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="setCustomPropertyForProcessInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+        <xsd:element name="propertyName" type="xsd:string"/>
+        <xsd:element name="propertyValue" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="setCustomPropertyForProcessInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="setCustomPropertyForActivityInstance">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+        <xsd:element name="propertyName" type="xsd:string"/>
+        <xsd:element name="propertyValue" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="setCustomPropertyForActivityInstanceResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="setCustomPropertyUsingActivityName">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+        <xsd:element name="activityName" type="xsd:string"/>
+        <xsd:element name="propertyName" type="xsd:string"/>
+        <xsd:element name="propertyValue" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="setCustomPropertyUsingActivityNameResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="completeAndClaimSuccessor">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+        <xsd:element name="output" type="bct:UserDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="completeAndClaimSuccessorResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="completeAndClaimSuccessorResult" nillable="true" type="bpt:CompleteAndClaimSuccessorResultType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="call">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="processTemplateName" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="portType" type="xsd:QName"/>
+        <xsd:element minOccurs="0" name="operation" type="xsd:string"/>
+        <xsd:element name="input" type="bct:UserDataType"/>
+        <xsd:element minOccurs="0" name="processInstanceName" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="callResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="output" type="bct:UserDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="forceTerminate">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+        <xsd:element name="invokeCompensation" type="xsd:integer"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="forceTerminateResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="delete">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="deleteResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="restart">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="restartResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="resume">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="resumeResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="suspend">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="suspendResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="suspendFor">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+        <xsd:element name="duration" type="xsd:duration"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="suspendForResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="suspendUntil">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+        <xsd:element name="deadline" type="xsd:dateTime"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="suspendUntilResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="createStoredQuery">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="storedQuery" type="bct:StoredQueryType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="createStoredQueryResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="deleteStoredQuery">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="storedQueryName" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="deleteStoredQueryResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getStoredQuery">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="storedQueryName" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getStoredQueryResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="storedQuery" nillable="true" type="bct:StoredQueryType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getStoredQueryNames">
+    <xsd:complexType>
+      <xsd:sequence/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getStoredQueryNamesResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="storedQueryNames" type="bct:StoredQueryNamesType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="executeStoredQuery">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="storedQueryName" type="xsd:string"/>
+        <xsd:element name="skipTuples" nillable="true" type="xsd:integer"/>
+        <xsd:element name="threshold" nillable="true" type="xsd:integer"/>
+        <xsd:element minOccurs="0" name="parameters" type="bct:ParametersType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="executeStoredQueryResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="queryResultSet" type="bct:QueryResultSetType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="forceRetry">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+        <xsd:element name="continueOnError" type="xsd:boolean"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="forceRetryResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="forceRetryWithInput">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+        <xsd:element name="input" type="bct:UserDataType"/>
+        <xsd:element name="continueOnError" type="xsd:boolean"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="forceRetryWithInputResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="forceComplete">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+        <xsd:element name="continueOnError" type="xsd:boolean"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="forceCompleteResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="forceCompleteWithOutput">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+        <xsd:element name="output" type="bct:UserDataType"/>
+        <xsd:element name="continueOnError" type="xsd:boolean"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="forceCompleteWithOutputResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="forceCompleteWithFault">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="aiid" type="xsd:string"/>
+        <xsd:element name="fault" type="bct:UserDataType"/>
+        <xsd:element name="faultName" type="xsd:QName"/>
+        <xsd:element name="continueOnError" type="xsd:boolean"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="forceCompleteWithFaultResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getStartActivities">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ptid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getStartActivitiesResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="inboundOperationTemplates" type="bpt:InboundOperationTemplatesType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getWaitingActivities">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getWaitingActivitiesResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="inboundOperationTemplates" type="bpt:InboundOperationTemplatesType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="sendMessage">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="processTemplateName" type="xsd:string"/>
+        <xsd:element name="portType" type="xsd:QName"/>
+        <xsd:element name="operation" type="xsd:string"/>
+        <xsd:element name="input" type="bct:UserDataType"/>
+        <xsd:element minOccurs="0" name="processInstanceName" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="sendMessageResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getActiveEventHandlers">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="piid" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getActiveEventHandlersResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="inboundOperationTemplates" type="bpt:InboundOperationTemplatesType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="callAsync">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="processTemplateName" type="xsd:string"/>
+        <xsd:element name="portType" type="xsd:QName"/>
+        <xsd:element name="operation" type="xsd:string"/>
+        <xsd:element name="input" type="bct:UserDataType"/>
+        <xsd:element name="replyTo" type="bct:ReplyToType"/>
+        <xsd:element minOccurs="0" name="processInstanceName" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="callAsyncResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <!-- empty response message -->
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="findQueryTableMetaData">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="metaDataOptions" nillable="true" type="bct:MetaDataOptionsType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="findQueryTableMetaDataResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="queryTableMetaDataSet" type="bct:QueryTableMetaDataSetType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="getQueryTableMetaData">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="queryTableName" type="xsd:string"/>
+        <xsd:element name="locale" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getQueryTableMetaDataResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="queryTableMetaData" type="bct:QueryTableMetaDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="queryEntities">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="queryTableName" type="xsd:string"/>
+        <xsd:element name="filterOptions" nillable="true" type="bct:FilterOptionsType"/>
+        <xsd:element name="authorizationOptions" nillable="true" type="bct:AuthorizationOptionsType"/>
+        <xsd:element name="parameters" nillable="true" type="bct:QueryTableParametersType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="queryEntitiesResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="entityResultSet" type="bct:EntityResultSetType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="queryEntityCount">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="queryTableName" type="xsd:string"/>
+        <xsd:element name="filterOptions" nillable="true" type="bct:FilterOptionsType"/>
+        <xsd:element name="authorizationOptions" nillable="true" type="bct:AuthorizationOptionsType"/>
+        <xsd:element name="parameters" nillable="true" type="bct:QueryTableParametersType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="queryEntityCountResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="entityCount" type="xsd:integer"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="initiateAndClaimFirst">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="processTemplateName" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="processInstanceName" type="xsd:string"/>
+        <xsd:element name="input" type="bct:UserDataType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="initiateAndClaimFirstResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="initiateAndClaimFirstResult" nillable="true" type="bpt:InitiateAndClaimFirstResultType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>  
+
+</xsd:schema>
