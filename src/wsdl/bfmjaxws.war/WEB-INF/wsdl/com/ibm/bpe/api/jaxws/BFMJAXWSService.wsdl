@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="BFMJAXWSService" targetNamespace="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0/Binding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bps="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpsb="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0/Binding" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+<wsdl:definitions name="BFMJAXWSService" targetNamespace="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0/Binding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bps="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpsb="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0/Binding" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
   <wsdl:import namespace="http://www.ibm.com/xmlns/prod/websphere/business-process/services/7.0" location="BFMJAXWSInterface.wsdl">
     </wsdl:import>
+
+	<!-- Added policy -->    
+    <wsp:Policy wsu:Id="UsernameTokenPolicy">
+		<sp:SupportingTokens xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:sp13="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200802">
+			<wsp:Policy>
+				<sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+					<wsp:Policy>
+						<sp:WssUsernameToken10 />
+						<sp13:Created />
+						<sp13:Nonce />
+					</wsp:Policy>
+				</sp:UsernameToken>
+			</wsp:Policy>
+		</sp:SupportingTokens>
+    </wsp:Policy>
+
   <wsdl:binding name="BFMJAXWSBinding" type="bps:BFMJAXWSPortType">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <!-- Added policy reference -->
+    <wsp:PolicyReference URI="#UsernameTokenPolicy"/>
     <wsdl:operation name="queryProcessTemplates">
       <soap:operation soapAction=""/>
       <wsdl:input name="queryProcessTemplatesRequest">
