@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.gisnas.oystein.ibm</groupId>
 	<artifactId>business-flow-manager-proxy</artifactId>
-	<version>8.5.0</version>
+	<version>8.5.1-SNAPSHOT</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
