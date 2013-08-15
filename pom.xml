@@ -49,4 +49,21 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+	<scm>
+		<connection>scm:git:git@github.com:oysteing/business-flow-manager-proxy.git</connection>
+		<developerConnection>scm:git:git@github.com:oysteing/business-flow-manager-proxy.git</developerConnection>
+		<url>https://github.com/oysteing/business-flow-manager-proxy</url>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>oysteing-cloudbees-snapshot</id>
+			<url>https://repository-oysteing.forge.cloudbees.com/release</url>
+		</repository>
+		<snapshotRepository>
+			<id>oysteing-cloudbees-snapshot</id>
+			<url>https://repository-oysteing.forge.cloudbees.com/snapshot</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
